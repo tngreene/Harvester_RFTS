@@ -1,0 +1,20 @@
+Start
+Number of ships: 4
+
+Name: bomber
+X Position: 628
+Y Position: 254
+
+Name: enemy_fighter
+X Position: 882
+Y Position: 160
+
+Name: enemy_fighter
+X Position: 803
+Y Position: 274
+
+Name: kamikaze
+X Position: 1053
+Y Position: 213
+
+End

@@ -1,0 +1,36 @@
+Start
+Number of ships: 8
+
+Name: enemy_fighter
+X Position: 501
+Y Position: 236
+
+Name: enemy_fighter
+X Position: 599
+Y Position: 337
+
+Name: enemy_fighter
+X Position: 699
+Y Position: 438
+
+Name: enemy_fighter
+X Position: 900
+Y Position: 437
+
+Name: enemy_fighter
+X Position: 1000
+Y Position: 337
+
+Name: enemy_fighter
+X Position: 1101
+Y Position: 236
+
+Name: bomber
+X Position: 599
+Y Position: 137
+
+Name: bomber
+X Position: 999
+Y Position: 137
+
+End

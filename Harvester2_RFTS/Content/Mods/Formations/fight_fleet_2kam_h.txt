@@ -1,0 +1,52 @@
+Start
+Number of ships: 12
+
+Name: enemy_fighter
+X Position: 499
+Y Position: 137
+
+Name: enemy_fighter
+X Position: 1399
+Y Position: 138
+
+Name: enemy_fighter
+X Position: 700
+Y Position: 137
+
+Name: enemy_fighter
+X Position: 1199
+Y Position: 137
+
+Name: enemy_fighter
+X Position: 901
+Y Position: 139
+
+Name: enemy_fighter
+X Position: 1000
+Y Position: 136
+
+Name: enemy_fighter
+X Position: 798
+Y Position: 339
+
+Name: enemy_fighter
+X Position: 498
+Y Position: 338
+
+Name: enemy_fighter
+X Position: 1099
+Y Position: 337
+
+Name: enemy_fighter
+X Position: 1400
+Y Position: 337
+
+Name: kamikaze
+X Position: 600
+Y Position: 137
+
+Name: kamikaze
+X Position: 1299
+Y Position: 136
+
+End

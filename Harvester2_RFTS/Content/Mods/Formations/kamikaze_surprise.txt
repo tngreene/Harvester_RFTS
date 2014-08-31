@@ -1,0 +1,24 @@
+Start
+Number of ships: 5
+
+Name: kamikaze
+X Position: 500
+Y Position: 138
+
+Name: kamikaze
+X Position: 699
+Y Position: 136
+
+Name: kamikaze
+X Position: 900
+Y Position: 138
+
+Name: kamikaze
+X Position: 1099
+Y Position: 138
+
+Name: kamikaze
+X Position: 1300
+Y Position: 137
+
+End

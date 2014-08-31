@@ -1,0 +1,16 @@
+Start
+Number of ships: 3
+
+Name: bomber
+X Position: 900
+Y Position: 238
+
+Name: bomber
+X Position: 499
+Y Position: 137
+
+Name: bomber
+X Position: 1299
+Y Position: 138
+
+End

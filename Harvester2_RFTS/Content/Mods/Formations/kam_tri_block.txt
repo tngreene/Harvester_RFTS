@@ -1,0 +1,28 @@
+Start
+Number of ships: 6. Difficulty: Hard
+
+Name: kamikaze
+X Position: 500
+Y Position: 134
+
+Name: kamikaze
+X Position: 500
+Y Position: 336
+
+Name: kamikaze
+X Position: 499
+Y Position: 534
+
+Name: kamikaze
+X Position: 700
+Y Position: 337
+
+Name: kamikaze
+X Position: 699
+Y Position: 137
+
+Name: kamikaze
+X Position: 899
+Y Position: 135
+
+End
