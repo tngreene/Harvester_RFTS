@@ -312,7 +312,7 @@ namespace GSDIIITool
 
         private void helpToolStripButton_Click(object sender, EventArgs e)
         {
-            HelpForm helpForm = new HelpForm();
+            Help helpForm = new Help();
             helpForm.Show();
         }
 

@@ -117,73 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="textBox3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="textBox3.Text" xml:space="preserve">
-    <value>1. Introduction
-     a. This tool allows a user to create custom formations for the main game. It saves it's files in the X folder
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Introduction
+   This tool allows a user to create custom formations for the main game. It saves it's files in the game's TBD folder
 
-2. How to use	 
-     a. The User Interface
-          * The Green, Purple, and Yellow Enemy are selectors.
-          * The Red Ship toggles the image of the players ship, simply for visual reference.
+2. UI Overview
+          * Click on the enemy buttons to select your "brush", then click anywhere inside the red square (safe zone) to place
+          * The red player is there only for visual reference
           * The dropdown menu above the file name lets you select diffrent difficulties (default is easy.)
-          * The box under File Name is the name of the file that will be used in the program.
+          * Put your file name in the file name dialog box, file extension is not needed
           * The Tool Bar
-               - New: Creates a new blank page.
-               - Open: Opens an existing .frm file.
-               - Save: Saves the current formation into a .frm and overwrites an existing one.
-               - Print: Exports the formation as a human readable text document.
-               - Help: Brings up this screen.
-     b. How to place enemies on the screen
-		* Click on an enemy
-		* Click on the canvas (within the red zone)
-		* Repeat until you want to change enemy types or want to do other options
-     c. How to open files
-          * Put the exact file name (without the .frm) into the file box.
-          * Enter the file path to where that file is located.
-          * Click Open.
-          *If there were no errors in the operation a message box saying “Success!” will appear as well as your desired formation.</value>
-  </data>
-  <metadata name="textBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>     d. How to save files
-          * To save a file first make sure that the file path is set to where you want it to save.
-          * Next choose a file name. It is unnecissary to add (.frm).
-          * Click Save.
-          * If there were no errors with the operation it will bring up a success box.
-     e. How to export files to a human readable format
-          * To export a file first make sure that the file path is set to where you want it to save.
-          * Next choose a file name. It is unnecissary to add (.frm).
-          * Click Export.
-          * If there were no errors with the operation it will bring up a success box.
-     f. How to get Help
-          * Click Help.</value>
+               - New (Ctrl+N): Creates a new blank page.
+               - Open (Ctrl+O): Opens an existing format file, the file is chosen from what is in the dialog box
+               - Save: (Ctrl+S): Saves the current formation, overwrites an existing one.
+               - Help (F1): Brings up this screen.
+
+This tool was designed by Theodore "Ted" Greene for Team Cascioli Ravioli for use with the game Harvester (c)2012-14</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAEBAQAAAABAAoAQAAJgAAACAgEAAAAAQA6AIAAE4BAAAoAAAAEAAAACAAAAABAAQAAAAAAIAA
         AAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAgAAAgAAAAICAAIAAAACAAIAAgIAAAICAgADAwMAAAAD/AAD/
-        AAAA//8A/wAAAP8A/wD//wAA////AERERERESZmURERERERJmZREREREREmZlERERERESZmURERERERJ
-        mZRERJRERERJlEREmZRESZmZRESZmZmZmZlERJmZmZmZmUREmZREREmZREmZRERERERESZlERERERERJ
-        mUREREREREmZRERERERESZlEREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAgAAAAQAAAAAEABAAAAAAAgAIAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAgICAAMDAwAAAAP8AAP8AAAD/
-        /wD/AAAA/wD/AP//AAD///8AAAAAAAAAAAAAAAAAAAAAAAAHiIiIiIiIiIiIiIiIAAAAB/////j///j/
-        //j/+AAAAAf////4///4///4//gAAAAH////+P//+P//+P/4AAAAB/////j///j///j/+AAAAAf////4
-        ///4///4//gAAAAHiIiIiIiIiIiIiIiIAAAAB/94eHh4eHh4eHj/+AAAAAf/h4eIh4eIh4eI//gAAAAH
-        /3h4eHh4eHh4eP/4AAAAB/+Hh4iHh4iHh4j/+AAAAAf/eHh4eHh4eHh4//gAAAAHiIiIiIiIiIiIiIiI
-        AAAAB/94eHh4eHh4eHj/+AAAAAf/h4eIh4eIh4eI//gAAAAH/3h4eHh4eHh4eP/4AAAAB/+Hh4iHh4iH
-        h4j/+AAAAAf/eHh4eHh4eHh4//gAAAAHiIiIiIiIiIiIiIiIAAAAB/94eHh4eHh4eHj/+AAAAAf/h4eI
-        h4eIh4eI//gAAAAH/3h4eHh4eHh4eP/4AAAAB/+Hh4iHh4iHh4j/+AAAAAf/eHh4eHh4eHh4//gAAAAH
-        iIiIiIiIiIiIcAAAAAAAB/////j///j//3/4cAAAAAf////4///4//9/hwAAAAAH////+P//+P//eHAA
-        AAAAB/////j///j//3cAAAAAAAf////4///4//9wAAAAAAAHd3d3d3d3d3d3cAAAAADgAAAH4AAAB+AA
-        AAfgAAAH4AAAB+AAAAfgAAAH4AAAB+AAAAfgAAAH4AAAB+AAAAfgAAAH4AAAB+AAAAfgAAAH4AAAB+AA
-        AAfgAAAH4AAAB+AAAAfgAAAH4AAAB+AAAAfgAAAH4AAAB+AAAA/gAAAf4AAAP+AAAH/gAAD/4AAB/w==
+        AAAA//8A/wAAAP8A/wD//wAA////AERElERESZmURESURERJmZRERJlEREmZlEREmURESZmURESZRERJ
+        mZRERJlERERJlEREmZRESZmZRESZmZmZmZlERJmZmZmZmUREmZREREmZREmZRERERJlESZlEREREmURJ
+        mURERESZREmZRERESZRESZlERERJlEREREREREmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAA
+        AAAAAAAAEAAAABAAAAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAgICAAMDAwAAAAP8AAP8AAAD/
+        /wD/AAAA/wD/AP//AAD///8ARERERJlERERERESZmZmZRERERESZREREREREmZmZmUREREREmURERERE
+        RJmZmZlERERERJlERERERESZmZmZRERERESZmUREREREmZmZmUREREREmZlERERERJmZmZlERERERJmZ
+        RERERESZmZmZRERERESZmUREREREmZmZmUREREREmZlERERERJmZmZlERERERJmZRERERESZmZmZRERE
+        RESZmURERERERESZmUREREREmZlEREREREREmZlERERERJmZmURERESZmZmZmURERESZmZlEREREmZmZ
+        mZlEREREmZmZmZmZmZmZmZmZRERERJmZmZmZmZmZmZmZmURERESZmZmZmZmZmZmZmZlEREREmZmZmZmZ
+        mZmZmZmZRERERJmZmURERERERJmZmURERESZmZlERERERESZmZlERESZmZlERERERERERJmZREREmZmZ
+        RERERERERESZmURERJmZmUREREREREREmZlERESZmZlERERERERERJmZREREmZmZRERERERERESZmURE
+        RJmZmUREREREREREmZlERESZmZlEREREREREmZlEREREmZmZRERERERERJmZRERERJmZmURERERERESZ
+        mURERESZmZlEREREREREmZlERERERERERERERERERJmZRERERERERERERERERESZmUQAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
 </root>

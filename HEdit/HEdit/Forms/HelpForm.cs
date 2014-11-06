@@ -9,16 +9,12 @@ using System.Windows.Forms;
 
 namespace GSDIIITool
 {
-    public partial class HelpForm : Form
+    public partial class Help : Form
     {
-        public HelpForm()
+        public Help()
         {
             InitializeComponent();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
