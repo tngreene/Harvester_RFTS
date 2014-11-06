@@ -13,7 +13,7 @@ namespace GSDIIITool.Forms
     {
         private Rectangle _canvasRect;
         private Rectangle _safeZone;
-        
+        private PictureBox _heroReference;
         private FormationPallete _fRef;
         private List<Ship> _shipList;
 
@@ -23,14 +23,24 @@ namespace GSDIIITool.Forms
             _fRef = fp;
             _canvasRect = new Rectangle(0, 0, 1024,576);//16:9
             _safeZone = new Rectangle(_canvasRect.Left + _fRef.ShipRepresentation.Width / 2, _canvasRect.Top + _fRef.ShipRepresentation.Height / 2, _canvasRect.Width - _fRef.ShipRepresentation.Width, _canvasRect.Height - _fRef.ShipRepresentation.Height);
-
+            _heroReference = new PictureBox();
+            _heroReference.Image = Properties.Resources.phoenix;
+            _heroReference.Size = Properties.Resources.phoenix.Size;
+            _heroReference.BorderStyle = BorderStyle.FixedSingle;
+            _heroReference.Location = new Point(_canvasRect.Width / 2 + _canvasRect.Left - _heroReference.Image.Width / 2, _canvasRect.Height - _heroReference.Image.Height - 5);
+            _heroReference.Show();
+            Controls.Add(_heroReference);
             _shipList = new List<Ship>();
         }
 
         public void AddShip(int x, int y)
         {
             Point p = new Point(x, y);
-            if (this._safeZone.Contains(p))
+            if (_fRef.ShipType == "PhxMkII")
+            {
+
+            }
+            else if (this._safeZone.Contains(p))
             {
                 /* Get the current clicked button from the FP
                  * Create ship at that x and y with that type

@@ -54,10 +54,8 @@ namespace GSDIIITool
 
             InitializeComponent();
             this.difficultySelectList.SelectedIndex = 0;
-            //Set up the Hero Ship
-            //HeroShipPicture.Location = new Point(_canvasRect.Width/2+_canvasRect.Left, _canvasRect.Height);
-            
-            _button = PhxMkII;
+                        
+            _button = enemy_fighter;
 
             c = new Canvas(this);
             c.Show();

@@ -44,7 +44,6 @@
             this.mouse_coords = new System.Windows.Forms.Label();
             this.kamikaze = new System.Windows.Forms.Button();
             this.bomber = new System.Windows.Forms.Button();
-            this.PhxMkII = new System.Windows.Forms.Button();
             this.enemy_fighter = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -197,18 +196,6 @@
             this.bomber.UseVisualStyleBackColor = false;
             this.bomber.Click += new System.EventHandler(this.BomberBeetle_Click);
             // 
-            // PhxMkII
-            // 
-            this.PhxMkII.BackColor = System.Drawing.SystemColors.Window;
-            this.PhxMkII.Image = global::GSDIIITool.Properties.Resources.phoenix;
-            this.PhxMkII.Location = new System.Drawing.Point(65, 87);
-            this.PhxMkII.Margin = new System.Windows.Forms.Padding(4);
-            this.PhxMkII.Name = "PhxMkII";
-            this.PhxMkII.Size = new System.Drawing.Size(50, 50);
-            this.PhxMkII.TabIndex = 57;
-            this.PhxMkII.UseVisualStyleBackColor = false;
-            this.PhxMkII.Click += new System.EventHandler(this.PhxMkII_Click);
-            // 
             // enemy_fighter
             // 
             this.enemy_fighter.BackColor = System.Drawing.SystemColors.Window;
@@ -226,7 +213,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(128, 320);
-            this.Controls.Add(this.PhxMkII);
             this.Controls.Add(this.bomber);
             this.Controls.Add(this.mouse_coords);
             this.Controls.Add(this.kamikaze);
@@ -269,7 +255,6 @@
         private System.Windows.Forms.Button enemy_fighter;
         private System.Windows.Forms.Button kamikaze;
         private System.Windows.Forms.Button bomber;
-        private System.Windows.Forms.Button PhxMkII;
 
     }
 }
