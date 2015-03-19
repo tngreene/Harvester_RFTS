@@ -22,20 +22,23 @@ namespace HEdit
         //button you clicked
         private Button _button;
         public String ShipType { get { return _button.Name; } }
-        public PictureBox ShipRepresentation {
+        
+        public PictureBox ShipRepresentation 
+        {
             get {
                 PictureBox tmp = new PictureBox();
                 tmp.Image = _button.Image;
                 return tmp;
             }
         }
+        
         //A list of ships to keep track of, this will be used later in saving
         private List<Ship> _shipList;
 
         //A list of picture boxes to keep track of, this will be used in removing them
         private List<PictureBox> _pictureBoxList;
 
-        private Canvas c;
+        private Canvas _canvas;
         //public TextBox FileName { get { return _fileName; } }
         //public TextBox FilePath { get { return _filePath; } }
 
@@ -45,19 +48,15 @@ namespace HEdit
             _fileName = this.FileName;
             _filePath = new TextBox();
             _filePath.Text = Directory.GetCurrentDirectory().ToString();
-
-            //Thanks to Eli Gazit at this post http://social.msdn.microsoft.com/forums/en-US/winforms/thread/2995a8cf-62af-446e-87ab-75045d670942
-            ToolStripMenuItem button = new ToolStripMenuItem();
-
-            button.Size = new Size(0, 0);
-
+            
             InitializeComponent();
             this.difficultySelectList.SelectedIndex = 0;
-                        
+            _shipList = new List<Ship>();
+            _pictureBoxList = new List<PictureBox>();
             _button = enemy_fighter;
 
-            c = new Canvas(this);
-            c.Show();
+            _canvas = new Canvas(this);
+            _canvas.Show();
         }
         public void ChangeCoords(int x, int y)
         {
@@ -79,24 +78,13 @@ namespace HEdit
         private void BomberBeetle_Click(object sender, EventArgs e)
         {
             //Set the button
-            _button = bomber;
-
-            //Set the name
-            //_shipType = bomber.Name;
-            //Activate the mouse
-            
+            _button = bomber;            
         }
 
         private void Kamikaze_Click(object sender, EventArgs e)
         {
             //Set the button
-            _button = kamikaze;
-
-            //Set the name
-            //_shipType = kamikaze.Name;
-
-            //Activate the mouse
-            
+            _button = kamikaze;            
         }
         
         ///<summary>
@@ -117,7 +105,7 @@ namespace HEdit
 
         private void FormationPallete_MouseMove(object sender, MouseEventArgs e)
         {
-            mouse_coords.Text = this.PointToScreen(e.Location).X + "," + this.PointToScreen(e.Location).Y;
+           // mouse_coords.Text = this.PointToScreen(e.Location).X + "," + this.PointToScreen(e.Location).Y;
         }
 
         #region Tool Strip Buttons
@@ -177,11 +165,7 @@ namespace HEdit
         //When you click on open
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
-            //Make each box invisible
-            foreach (PictureBox p in _pictureBoxList)
-            {
-                p.Visible = false;
-            }
+       
             //Reset the whole canvas
             //Clear the lists
             _shipList.Clear();
@@ -192,7 +176,6 @@ namespace HEdit
             try
             {
                 //make a new File Stream, using means dispose of it after this is done
-
                 inStream = File.OpenRead(this._filePath.Text + "\\" + this.FileName.Text + ".frm");
 
                 //Make a new binaryReader, using means dispose of it after this is done
@@ -200,19 +183,19 @@ namespace HEdit
 
                 //read in the number of ships in the ship list. It isn't nesasary to the rest of the process
                 //but if you don't everything will get out of place
-                int temp = reader.ReadInt32();
+                int ship_count = reader.ReadInt32();
 
                 while (reader.BaseStream.Position != reader.BaseStream.Length)
                 {
                     //Read x
-                    int x = reader.ReadInt32();
+                    double x = reader.ReadDouble();
                     //Read y
-                    int y = reader.ReadInt32();
+                    double y = reader.ReadDouble();
                     //Read the name
                     string name = reader.ReadString();
 
                     //Using that info add a new ship to the list
-                   // _shipList.Add(new Ship(x, y, name));
+                    _shipList.Add(new Ship(x, y, name));
                 }
 
                 //For every ship in the list
@@ -232,47 +215,39 @@ namespace HEdit
                     //Add the control
                     Controls.Add(enemy);
 
-                    //Big Switch around names
-                    #region
+                    //Translates some value such as .333333... into 341.3333 (1/3 of 1024). It will round trip back into something close to
+                    //Its original value
+                    int relativeHDtoHD_X = (int)(_shipList[i].X * _canvas.Width);
+                    int relativeHDtoHD_Y = (int)(_shipList[i].Y * _canvas.Height);
+                    int enemyCenter = (enemy.Height / 2);
+
+                    #region Big Switch around enemy types
                     switch (_shipList[i].Name)
                     {
                         case ("enemy_fighter"):
                             enemy.Image = HEdit.Properties.Resources.enemy_fighter;
-                            //Set the location
-                            //Subtract half the picturebox's width and subtract 27 from the Y to account for the top bar and also half the height to place it in the center
-                            //Exactly where the imported ship is
-                            enemy.Location = new Point(_shipList[i].X - enemy.Width / 2, _shipList[i].Y - 27 - (enemy.Height / 2));
-                            //Show the box
-                            enemy.Show();
+                            enemy.Location = new Point(relativeHDtoHD_X - enemy.Width / 2, relativeHDtoHD_Y - enemyCenter);
                             break;
                         case ("bomber"):
                             enemy.Image = HEdit.Properties.Resources.bomber;
-                            //Set the location
-                            //Subtract half the picturebox's width and subtract 27 from the Y to account for the top bar and also half the height to place it in the center
-                            //Exactly where the imported ship is
-                            enemy.Location = new Point(_shipList[i].X - enemy.Width / 2, _shipList[i].Y - 27 - (enemy.Height / 2));
-                            //Show the box
-                            enemy.Show();
+                            enemy.Location = new Point(relativeHDtoHD_X - enemy.Width / 2, relativeHDtoHD_Y - enemyCenter);
                             break;
                         /*case ("imperial_boss"):
                             enemy.Image = GSDIIITool.Properties.Resources.Ship___Imperial_v2__Boss_;
                             //Set the location
-                            //Subtract half the picturebox's width and subtract 27 from the Y to account for the top bar and also half the height to place it in the center
-                            //Exactly where the imported ship is
-                            enemy.Location = new Point(_shipList[i].X - enemy.Width / 2, _shipList[i].Y - 27 - (enemy.Height / 2));
+                            
+                            
+                            enemy.Location = new Point(_shipList[i].X - enemy.Width / 2, _shipList[i].Y - enemyCenter);
                             //Show the box
                             enemy.Show();
                             break;*/
                         case ("kamikaze"):
                             enemy.Image = HEdit.Properties.Resources.kamikaze;
-                            //Set the location
-                            //Subtract half the picturebox's width and subtract 27 from the Y to account for the top bar and also half the height to place it in the center
-                            //Exactly where the imported ship is
-                            enemy.Location = new Point(_shipList[i].X - enemy.Width / 2, _shipList[i].Y - 27 - (enemy.Height / 2));
-                            //Show the box
-                            enemy.Show();
+                            enemy.Location = new Point(relativeHDtoHD_X - enemy.Width / 2, relativeHDtoHD_Y - enemyCenter);
                             break;
                     }
+                    enemy.Show();
+                    _canvas.Controls.Add(enemy);
                     #endregion
 
                     //For testing purposes you can use output to double check what is in the text boxes on the panel
@@ -368,8 +343,8 @@ namespace HEdit
 
         private void FormationPallete_LocationChanged(object sender, EventArgs e)
         {
-            c.Top = this.Top;
-            c.Left = this.Left + this.Width;
+            _canvas.Top = this.Top;
+            _canvas.Left = this.Left + this.Width;
         }
     }
 }

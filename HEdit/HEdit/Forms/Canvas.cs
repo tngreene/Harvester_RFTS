@@ -57,7 +57,7 @@ namespace HEdit.Forms
 
                 //Add the control
                 Controls.Add(picture);
-                Ship tmp = new Ship(x, y, currentType,picture);
+                Ship tmp = new Ship(x, y, currentType);//,picture);
                 _shipList.Add(tmp);
             }
             else
@@ -115,6 +115,5 @@ namespace HEdit.Forms
             MouseEventArgs mouse_e = (MouseEventArgs)e;
             AddShip(mouse_e.X, mouse_e.Y);
         }
-
     }
 }
