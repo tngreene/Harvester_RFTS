@@ -1,4 +1,4 @@
-﻿namespace GSDIIITool
+﻿namespace HEdit
 {
     partial class FormationPallete
     {
@@ -131,6 +131,7 @@
             this.FileName.Name = "FileName";
             this.FileName.Size = new System.Drawing.Size(100, 22);
             this.FileName.TabIndex = 53;
+            this.FileName.Text = "4";
             // 
             // FileNameLabel
             // 
@@ -152,7 +153,7 @@
             this.difficultySelectList.Location = new System.Drawing.Point(4, 245);
             this.difficultySelectList.Name = "difficultySelectList";
             this.difficultySelectList.Size = new System.Drawing.Size(121, 24);
-            this.difficultySelectList.TabIndex = 54;
+            this.difficultySelectList.TabIndex = 3;
             // 
             // difficultySelectLabel
             // 
@@ -175,36 +176,36 @@
             // kamikaze
             // 
             this.kamikaze.BackColor = System.Drawing.SystemColors.Window;
-            this.kamikaze.Image = global::GSDIIITool.Properties.Resources.kamikaze;
+            this.kamikaze.Image = global::HEdit.Properties.Resources.kamikaze;
             this.kamikaze.Location = new System.Drawing.Point(7, 87);
             this.kamikaze.Margin = new System.Windows.Forms.Padding(4);
             this.kamikaze.Name = "kamikaze";
             this.kamikaze.Size = new System.Drawing.Size(50, 50);
-            this.kamikaze.TabIndex = 6;
+            this.kamikaze.TabIndex = 2;
             this.kamikaze.UseVisualStyleBackColor = false;
             this.kamikaze.Click += new System.EventHandler(this.Kamikaze_Click);
             // 
             // bomber
             // 
             this.bomber.BackColor = System.Drawing.SystemColors.Window;
-            this.bomber.Image = global::GSDIIITool.Properties.Resources.bomber;
+            this.bomber.Image = global::HEdit.Properties.Resources.bomber;
             this.bomber.Location = new System.Drawing.Point(65, 29);
             this.bomber.Margin = new System.Windows.Forms.Padding(4);
             this.bomber.Name = "bomber";
             this.bomber.Size = new System.Drawing.Size(50, 50);
-            this.bomber.TabIndex = 56;
+            this.bomber.TabIndex = 1;
             this.bomber.UseVisualStyleBackColor = false;
             this.bomber.Click += new System.EventHandler(this.BomberBeetle_Click);
             // 
             // enemy_fighter
             // 
             this.enemy_fighter.BackColor = System.Drawing.SystemColors.Window;
-            this.enemy_fighter.Image = global::GSDIIITool.Properties.Resources.enemy_fighter;
+            this.enemy_fighter.Image = global::HEdit.Properties.Resources.enemy_fighter;
             this.enemy_fighter.Location = new System.Drawing.Point(7, 29);
             this.enemy_fighter.Margin = new System.Windows.Forms.Padding(4);
             this.enemy_fighter.Name = "enemy_fighter";
             this.enemy_fighter.Size = new System.Drawing.Size(50, 50);
-            this.enemy_fighter.TabIndex = 2;
+            this.enemy_fighter.TabIndex = 0;
             this.enemy_fighter.UseVisualStyleBackColor = false;
             this.enemy_fighter.Click += new System.EventHandler(this.regularEnemy_Click);
             // 

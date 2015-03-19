@@ -5,7 +5,7 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace GSDIIITool
+namespace HEdit
 {
     /// <summary>
     /// A Ship class to help with writing

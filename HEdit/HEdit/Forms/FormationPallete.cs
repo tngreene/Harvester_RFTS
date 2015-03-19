@@ -8,15 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using GSDIIITool.Forms;
+using HEdit.Forms;
 
-namespace GSDIIITool
+namespace HEdit
 {
     public partial class FormationPallete : Form
     {
         //Attributes
         #region
-        private Point canvasCoords;
         private TextBox _fileName;
         private TextBox _filePath;
 
@@ -219,7 +218,7 @@ namespace GSDIIITool
                 //For every ship in the list
                 for (int i = 0; i < _shipList.Count; i++)
                 {
-                    var list = GSDIIITool.Properties.Resources.ResourceManager.GetResourceSet(new System.Globalization.CultureInfo("en-us"),true,true);
+                    var list = HEdit.Properties.Resources.ResourceManager.GetResourceSet(new System.Globalization.CultureInfo("en-us"),true,true);
 
                     //Make a new enemy PictureBox
                     PictureBox enemy = new PictureBox();
@@ -238,7 +237,7 @@ namespace GSDIIITool
                     switch (_shipList[i].Name)
                     {
                         case ("enemy_fighter"):
-                            enemy.Image = GSDIIITool.Properties.Resources.enemy_fighter;
+                            enemy.Image = HEdit.Properties.Resources.enemy_fighter;
                             //Set the location
                             //Subtract half the picturebox's width and subtract 27 from the Y to account for the top bar and also half the height to place it in the center
                             //Exactly where the imported ship is
@@ -247,7 +246,7 @@ namespace GSDIIITool
                             enemy.Show();
                             break;
                         case ("bomber"):
-                            enemy.Image = GSDIIITool.Properties.Resources.bomber;
+                            enemy.Image = HEdit.Properties.Resources.bomber;
                             //Set the location
                             //Subtract half the picturebox's width and subtract 27 from the Y to account for the top bar and also half the height to place it in the center
                             //Exactly where the imported ship is
@@ -265,7 +264,7 @@ namespace GSDIIITool
                             enemy.Show();
                             break;*/
                         case ("kamikaze"):
-                            enemy.Image = GSDIIITool.Properties.Resources.kamikaze;
+                            enemy.Image = HEdit.Properties.Resources.kamikaze;
                             //Set the location
                             //Subtract half the picturebox's width and subtract 27 from the Y to account for the top bar and also half the height to place it in the center
                             //Exactly where the imported ship is

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GSDIIITool
+namespace HEdit
 {
     public partial class Help : Form
     {

@@ -8,8 +8,8 @@
     <ProjectGuid>{787D3469-7A68-43F3-B4F3-B17EDBC906B8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GSDIIITool</RootNamespace>
-    <AssemblyName>GSDIIITool</AssemblyName>
+    <RootNamespace>HEdit</RootNamespace>
+    <AssemblyName>HEdit</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

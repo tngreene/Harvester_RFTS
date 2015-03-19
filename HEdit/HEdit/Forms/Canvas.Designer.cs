@@ -1,4 +1,4 @@
-﻿namespace GSDIIITool.Forms
+﻿namespace HEdit.Forms
 {
     partial class Canvas
     {

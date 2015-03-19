@@ -1,4 +1,4 @@
-﻿namespace GSDIIITool
+﻿namespace HEdit
 {
     partial class Help
     {
