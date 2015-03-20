@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harvester2_RFTS", "Harvester2_RFTS.csproj", "{3B55CEE8-7A8C-4E75-AEEE-D61C91A425E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HEdit", "..\HEdit\HEdit\HEdit.csproj", "{787D3469-7A68-43F3-B4F3-B17EDBC906B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,16 @@ Global
 		{3B55CEE8-7A8C-4E75-AEEE-D61C91A425E9}.Release|Mixed Platforms.Build.0 = Release|x86
 		{3B55CEE8-7A8C-4E75-AEEE-D61C91A425E9}.Release|x86.ActiveCfg = Release|x86
 		{3B55CEE8-7A8C-4E75-AEEE-D61C91A425E9}.Release|x86.Build.0 = Release|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Debug|x86.ActiveCfg = Debug|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Debug|x86.Build.0 = Debug|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Release|Any CPU.ActiveCfg = Release|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Release|Mixed Platforms.Build.0 = Release|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Release|x86.ActiveCfg = Release|x86
+		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

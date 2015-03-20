@@ -118,34 +118,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Mods\Formations\2xall3_m.txt" />
-    <Content Include="Content\Mods\Formations\3fight_2kam_e.txt" />
-    <Content Include="Content\Mods\Formations\all3_e.txt" />
-    <Content Include="Content\Mods\Formations\bomber test.txt" />
-    <Content Include="Content\Mods\Formations\bomber_fighter_tri.txt" />
-    <Content Include="Content\Mods\Formations\bomber_tri.txt" />
-    <Content Include="Content\Mods\Formations\enemies_bomber2_kamikaze_heart.txt" />
-    <Content Include="Content\Mods\Formations\enemies_bomber2_v.txt" />
-    <Content Include="Content\Mods\Formations\enemies_bomber_v.txt" />
-    <Content Include="Content\Mods\Formations\enemies_v.txt" />
-    <Content Include="Content\Mods\Formations\fighter_kamikaze_bomber_rect.txt" />
-    <Content Include="Content\Mods\Formations\fighter_kamikaze_u.txt" />
-    <Content Include="Content\Mods\Formations\fighter_kam_hex_m.txt" />
-    <Content Include="Content\Mods\Formations\fighter_xxxx_h.txt" />
-    <Content Include="Content\Mods\Formations\fight_clump_m.txt" />
-    <Content Include="Content\Mods\Formations\fight_fleet_2kam_h.txt" />
-    <Content Include="Content\Mods\Formations\fight_fleet_m.txt" />
-    <Content Include="Content\Mods\Formations\fight_kam_2bomb_o_m.txt" />
-    <Content Include="Content\Mods\Formations\fight_kam_bomb_o_m.txt" />
-    <Content Include="Content\Mods\Formations\fight_kam_o_e.txt" />
-    <Content Include="Content\Mods\Formations\fight_kam_tidal_m.txt" />
-    <Content Include="Content\Mods\Formations\fight_UU_2kam_bom_h.txt" />
-    <Content Include="Content\Mods\Formations\fight_UU_2kam_m.txt" />
-    <Content Include="Content\Mods\Formations\fight_UU_e.txt" />
-    <Content Include="Content\Mods\Formations\fivefighter_kamikaze_bomber_rect.txt" />
-    <Content Include="Content\Mods\Formations\kamikaze_surprise.txt" />
-    <Content Include="Content\Mods\Formations\kam_tri_block.txt" />
-    <Content Include="Content\Mods\Formations\m_enemies_bombers.txt" />
+    <Content Include="HEdit.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
     <Content Include="SDL.dll" />
   </ItemGroup>
@@ -396,83 +371,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Mods\Formations\e_3fight_2kam.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\e_bomber_fighter_tri.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\e_enemies_bombers.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\e_enemies_v.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\e_fighter_hex.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\e_fight_UU.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\e_t.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\h_d.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\h_enemies_bomber.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\h_fighter_xxxx.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\h_fight_fleet_2kam.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\h_fight_kam.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\h_fight_UU_2kam_bom.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\h_fivefighter_kamikaze_bomber_rect.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\h_kamikaze_surprise.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\h_kam_tri_block.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\m_all3_diag.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\m_e.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\m_enemies.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\m_ff.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\m_fighter_kam_hex.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\m_fight_clump.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\m_fight_kam_2bomb_o.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\m_fight_kam_bom_tidal.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Mods\Formations\m_fight_UU_2kam.frm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Content\Fonts\AccuracyFont.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -490,6 +388,83 @@
     </Content>
     <Content Include="Content\Fonts\ScoreFont.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Mods\Formations\e_3fight_2kam_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\e_bomber_fighter_tri_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\e_enemies_bombers_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\e_enemies_v_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\e_fighter_hex_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\e_fight_UU_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\e_t_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\h_d_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\h_enemies_bomber_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\h_fighter_xxxx_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\h_fight_fleet_2kam_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\h_fight_kam_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\h_fight_UU_2kam_bom_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\h_fivefighter_kamikaze_bomber_rect_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\h_kamikaze_surprise_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\h_kam_tri_block_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\m_all3_diag_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\m_enemies_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\m_e_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\m_ff_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\m_fighter_kam_hex_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\m_fight_clump_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\m_fight_kam_2bomb_o_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\m_fight_kam_bom_tidal_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mods\Formations\m_fight_UU_2kam_hd.frm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

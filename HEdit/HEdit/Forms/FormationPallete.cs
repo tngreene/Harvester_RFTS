@@ -150,7 +150,7 @@ namespace HEdit
         //When you click on save button
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            string directory = Directory.GetCurrentDirectory().ToString() + "\\";
+            string directory = Directory.GetCurrentDirectory().ToString() + "\\Content\\Mods\\Formations\\";
             string realFileName = this.FileName.Text;
           
             //Now we test if they added the file extension when they didn't have to
@@ -223,7 +223,7 @@ namespace HEdit
             BinaryReader reader = null;
             
             //Users must give the file names without .frm
-            string directory = Directory.GetCurrentDirectory().ToString() + "\\";
+            string directory = Directory.GetCurrentDirectory().ToString() + "\\Content\\Mods\\Formations\\";
             string realFileName = this.FileName.Text;
             if (realFileName.EndsWith(".frm") == false)
             {
