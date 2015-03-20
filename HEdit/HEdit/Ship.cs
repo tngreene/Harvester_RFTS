@@ -39,12 +39,18 @@ namespace HEdit
         /// <param name="x">x</param>
         /// <param name="y">y</param>
         /// <param name="name">name of ship</param>
+        /// <param name="representation">The PictureBox that this ship has, currently useless/harmless</param>
         public Ship(double x, double y, String name, PictureBox representation)
         {
             _x = x;
             _y = y;
             _name = name;
             _representation = representation;
+        }
+
+        public string ToString()
+        {
+            return X.ToString() + "," + Y.ToString() + ", " + _name;
         }
     }
 }

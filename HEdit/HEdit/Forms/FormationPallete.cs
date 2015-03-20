@@ -24,15 +24,8 @@ namespace HEdit
         /// </summary>
         private Button _button;
         public String ShipType { get { return _button.Name; } }
-        
-        public PictureBox ShipRepresentation 
-        {
-            get {
-                PictureBox tmp = new PictureBox();
-                tmp.Image = _button.Image;
-                return tmp;
-            }
-        }
+
+        public Size ButtonSize { get { return _button.Size; } }
         
         //A list of ships to keep track of, this will be used later in saving
         private List<Ship> _shipList;
@@ -74,7 +67,14 @@ namespace HEdit
         }
         #endregion
        
-        public void AddShip(double x, double y)
+        /// <summary>
+        /// Add's a ship to the program
+        /// </summary>
+        /// <param name="x">The x position</param>
+        /// <param name="y">The y position</param>
+        /// <param name="name">The ship type (used for opening a file</param>
+        /// <returns>If it succeded or not</returns>
+        public bool AddShip(double x, double y, string name="")
         {
             if (_canvas.SafeZone.Contains((int)x, (int)y))
             {
@@ -82,23 +82,56 @@ namespace HEdit
 
                 //Set up the picture box
                 PictureBox enemy_rep = new PictureBox();
-                enemy_rep.Image = _button.Image;
+
+                if (name == "")
+                {
+                    enemy_rep.Image = _button.Image;
+                    name = _button.Name;
+                }
+                else
+                {
+                    switch (name)
+                    {
+                        case "enemy_fighter":
+                            enemy_rep.Image = HEdit.Properties.Resources.enemy_fighter;
+                            break;
+                        case "bomber":
+                            enemy_rep.Image = HEdit.Properties.Resources.bomber;
+                            break;
+                        case "kamikaze":
+                            enemy_rep.Image = HEdit.Properties.Resources.kamikaze;
+                            break;
+                        default:
+                            MessageBox.Show("File is corrupted, found shiptype " + name);
+                            return false;
+                    }
+                }
                 enemy_rep.Size = _button.Size;
                 enemy_rep.Location = new Point((int)x - enemyCenter, (int)y - enemyCenter);
                 enemy_rep.BorderStyle = BorderStyle.FixedSingle;
                
                 //Using that info add a new ship to the list
-                _shipList.Add(new Ship(x, y, this.ShipType, enemy_rep));
+                _shipList.Add(new Ship(x, y, name, enemy_rep));
 
                 //Add the control to the canvas
                 _canvas.Controls.Add(enemy_rep);
             }
             else
             {
-                return;
+                return false;
+            }
+            return true;
+        }
+
+        public void PrintShipList()
+        {
+
+            for (int i = 0; i < ShipList.Count; i++)
+            {
+                string p = ShipList[i].ToString();
+                int print = 0;
             }
         }
-        
         public void Reset()
         {
             if (_canvas != null)
@@ -142,9 +175,9 @@ namespace HEdit
                         for (int i = 0; i < _shipList.Count; i++)
                         {
                             //Write x position
-                            writer.Write(_shipList[i].X);
+                            writer.Write(_shipList[i].X / _canvas.Width);
                             //Write y position
-                            writer.Write(_shipList[i].Y);
+                            writer.Write(_shipList[i].Y / _canvas.Height);
                             //Write name
                             writer.Write(_shipList[i].Name);
                         }
@@ -194,8 +227,13 @@ namespace HEdit
                     //Read the name
                     string name = reader.ReadString();
 
-                    AddShip(x * _canvas.Width, y * _canvas.Height);
+                    bool result = AddShip(x * _canvas.Width, y * _canvas.Height, name);
+                    if (result == false)
+                    {
+                        throw new Exception("File contained invalid ship type, could not continue loading. Check for data corruption");
+                    }
                 }
+
                 //Show that it was a success
                 MessageBox.Show("Success!");
             }
