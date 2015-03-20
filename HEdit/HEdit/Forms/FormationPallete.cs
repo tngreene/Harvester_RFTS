@@ -16,10 +16,12 @@ namespace HEdit
     {
         //Attributes
         #region
-        private TextBox _fileName;
-        private TextBox _filePath;
 
-        //button you clicked
+        /// <summary>
+        /// Although not ideal the button contains the following information vital to EveryThing.
+        /// Data for the game, the ship's name: _button.Name
+        /// Data for placing: _button.Size (50,50)
+        /// </summary>
         private Button _button;
         public String ShipType { get { return _button.Name; } }
         
@@ -34,25 +36,19 @@ namespace HEdit
         
         //A list of ships to keep track of, this will be used later in saving
         private List<Ship> _shipList;
-
+        public List<Ship> ShipList { get { return _shipList; } }
         //A list of picture boxes to keep track of, this will be used in removing them
         private List<PictureBox> _pictureBoxList;
 
         private Canvas _canvas;
-        //public TextBox FileName { get { return _fileName; } }
-        //public TextBox FilePath { get { return _filePath; } }
-
+        
         #endregion
         public FormationPallete()
-        {          
-            _fileName = this.FileName;
-            _filePath = new TextBox();
-            _filePath.Text = Directory.GetCurrentDirectory().ToString();
-            
+        {           
             InitializeComponent();
             this.difficultySelectList.SelectedIndex = 0;
             _shipList = new List<Ship>();
-            _pictureBoxList = new List<PictureBox>();
+
             _button = enemy_fighter;
 
             _canvas = new Canvas(this);
@@ -68,11 +64,6 @@ namespace HEdit
         {
             //Set the button
             _button = enemy_fighter;
-            //Set the name
-            //_shipType = enemy_fighter.Name;
-
-            //Activate the mouse
-            
         }
 
         private void BomberBeetle_Click(object sender, EventArgs e)
@@ -86,28 +77,39 @@ namespace HEdit
             //Set the button
             _button = kamikaze;            
         }
-        
-        ///<summary>
-        ///Clicking the Hero's button
-        ///</summary>
-        //Toggle between showing the refrence hero image
-        private void PhxMkII_Click(object sender, EventArgs e)
-        {
-            //HeroShipPicture.Visible = !HeroShipPicture.Visible;
-        }
         #endregion
+       
+        public void AddShip(double x, double y)
+        {
+            if (_canvas.SafeZone.Contains((int)x, (int)y))
+            {
+                int enemyCenter = (_button.Height / 2);
+
+                //Set up the picture box
+                PictureBox enemy_rep = new PictureBox();
+                enemy_rep.Image = _button.Image;
+                enemy_rep.Size = _button.Size;
+                enemy_rep.Location = new Point((int)x - enemyCenter, (int)y - enemyCenter);
+                enemy_rep.BorderStyle = BorderStyle.FixedSingle;
+               
+                //Using that info add a new ship to the list
+                _shipList.Add(new Ship(x, y, this.ShipType, enemy_rep));
+
+                //Add the control to the canvas
+                _canvas.Controls.Add(enemy_rep);
+            }
+            else
+            {
+                return;
+            }
+        }
         
-                
-        private void FormationPallete_Load(object sender, EventArgs e)
+        public void Reset()
         {
-
+            _canvas = new Canvas(this);
+            _shipList = new List<Ship>();
         }
-
-        private void FormationPallete_MouseMove(object sender, MouseEventArgs e)
-        {
-           // mouse_coords.Text = this.PointToScreen(e.Location).X + "," + this.PointToScreen(e.Location).Y;
-        }
-
+        
         #region Tool Strip Buttons
         //When you click on save button
         private void saveToolStripButton_Click(object sender, EventArgs e)
@@ -128,7 +130,7 @@ namespace HEdit
                         break;
                 }
                 //make a new File Stream, using means dispose of it after this is done
-                using (FileStream stream = new FileStream(this._filePath.Text + "\\" + difficultyText + this.FileName.Text + ".frm", FileMode.Create))
+                using (FileStream stream = new FileStream(Directory.GetCurrentDirectory().ToString() + "\\" + difficultyText + this.FileName.Text + ".frm", FileMode.Create))
                 {
                     //Make a new binaryWriter, using means dispose of it after this is done
                     using (BinaryWriter writer = new BinaryWriter(stream))
@@ -153,30 +155,28 @@ namespace HEdit
             }
             catch (FileNotFoundException fE)
             {
-                MessageBox.Show("The message can't be opened " + fE.Message);
+                MessageBox.Show(fE.Message);
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("The message can't be opened " + ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
+        #endregion
 
         //When you click on open
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
-       
             //Reset the whole canvas
             //Clear the lists
-            _shipList.Clear();
-            _pictureBoxList.Clear();
+            this.Reset();
 
             Stream inStream = null;
             BinaryReader reader = null;
             try
             {
                 //make a new File Stream, using means dispose of it after this is done
-                inStream = File.OpenRead(this._filePath.Text + "\\" + this.FileName.Text + ".frm");
+                inStream = File.OpenRead(Directory.GetCurrentDirectory().ToString() + "\\" + this.FileName.Text + ".frm");
 
                 //Make a new binaryReader, using means dispose of it after this is done
                 reader = new BinaryReader(inStream);
@@ -194,66 +194,7 @@ namespace HEdit
                     //Read the name
                     string name = reader.ReadString();
 
-                    //Using that info add a new ship to the list
-                    _shipList.Add(new Ship(x, y, name));
-                }
-
-                //For every ship in the list
-                for (int i = 0; i < _shipList.Count; i++)
-                {
-                    var list = HEdit.Properties.Resources.ResourceManager.GetResourceSet(new System.Globalization.CultureInfo("en-us"),true,true);
-
-                    //Make a new enemy PictureBox
-                    PictureBox enemy = new PictureBox();
-
-                    //Set the size
-                    enemy.Size = new Size(100, 100);
-
-                    //Set the border
-                    enemy.BorderStyle = BorderStyle.FixedSingle;
-
-                    //Add the control
-                    Controls.Add(enemy);
-
-                    //Translates some value such as .333333... into 341.3333 (1/3 of 1024). It will round trip back into something close to
-                    //Its original value
-                    int relativeHDtoHD_X = (int)(_shipList[i].X * _canvas.Width);
-                    int relativeHDtoHD_Y = (int)(_shipList[i].Y * _canvas.Height);
-                    int enemyCenter = (enemy.Height / 2);
-
-                    #region Big Switch around enemy types
-                    switch (_shipList[i].Name)
-                    {
-                        case ("enemy_fighter"):
-                            enemy.Image = HEdit.Properties.Resources.enemy_fighter;
-                            enemy.Location = new Point(relativeHDtoHD_X - enemy.Width / 2, relativeHDtoHD_Y - enemyCenter);
-                            break;
-                        case ("bomber"):
-                            enemy.Image = HEdit.Properties.Resources.bomber;
-                            enemy.Location = new Point(relativeHDtoHD_X - enemy.Width / 2, relativeHDtoHD_Y - enemyCenter);
-                            break;
-                        /*case ("imperial_boss"):
-                            enemy.Image = GSDIIITool.Properties.Resources.Ship___Imperial_v2__Boss_;
-                            //Set the location
-                            
-                            
-                            enemy.Location = new Point(_shipList[i].X - enemy.Width / 2, _shipList[i].Y - enemyCenter);
-                            //Show the box
-                            enemy.Show();
-                            break;*/
-                        case ("kamikaze"):
-                            enemy.Image = HEdit.Properties.Resources.kamikaze;
-                            enemy.Location = new Point(relativeHDtoHD_X - enemy.Width / 2, relativeHDtoHD_Y - enemyCenter);
-                            break;
-                    }
-                    enemy.Show();
-                    _canvas.Controls.Add(enemy);
-                    #endregion
-
-                    //For testing purposes you can use output to double check what is in the text boxes on the panel
-                    //Console.WriteLine(_newShip.X.ToString() + " " + _newShip.Y.ToString());
-                    //Add the enemy to the list of picture boxes
-                    _pictureBoxList.Add(enemy);
+                    AddShip(x * _canvas.Width, y * _canvas.Height);
                 }
                 //Show that it was a success
                 MessageBox.Show("Success!");
@@ -274,14 +215,8 @@ namespace HEdit
         //When you click on start
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
-            //Make each box invisible
-            foreach (PictureBox p in _pictureBoxList)
-            {
-                p.Visible = false;
-            }
             //Clear the lists
-            _shipList.Clear();
-            _pictureBoxList.Clear();
+            this.Reset();
         }
 
         private void helpToolStripButton_Click(object sender, EventArgs e)
@@ -289,57 +224,6 @@ namespace HEdit
             Help helpForm = new Help();
             helpForm.Show();
         }
-
-        private void printToolStripButton_Click(object sender, EventArgs e)
-        {
-            //make a new stream writer
-            StreamWriter output = null;
-
-            try
-            {
-                //Create the stream writer
-                output = new StreamWriter(this._filePath.Text + "\\" + this.FileName.Text + ".txt");
-
-                //Write some info
-                output.WriteLine("Start");
-
-                //Write the ship list number
-                output.WriteLine("Number of ships: " + _shipList.Count.ToString());
-                output.WriteLine("Difficulty: " + difficultySelectList.SelectedItem.ToString());
-
-                for (int i = 0; i < _shipList.Count; i++)
-                {
-                    //Write spacing
-                    output.WriteLine();
-                    //Write name, I know it is first when all the other times it was last but this is for readability
-                    output.WriteLine("Name: " + _shipList[i].Name);
-                    //Write X
-                    output.WriteLine("X Position: " + _shipList[i].X);
-                    //Write Y
-                    output.WriteLine("Y Position: " + _shipList[i].Y);
-                }
-                //Write spacing
-                output.WriteLine();
-                //Write some other info
-                output.WriteLine("End");
-
-                //Show that it was a success
-                MessageBox.Show("Success!");
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error writing file: " + ex.Message);
-            }
-            finally
-            {
-                if (output != null)
-                {
-                    output.Close();
-                }
-            }
-        }
-        #endregion
 
         private void FormationPallete_LocationChanged(object sender, EventArgs e)
         {

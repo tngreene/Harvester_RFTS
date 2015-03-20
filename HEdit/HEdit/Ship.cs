@@ -39,12 +39,12 @@ namespace HEdit
         /// <param name="x">x</param>
         /// <param name="y">y</param>
         /// <param name="name">name of ship</param>
-        public Ship(double x, double y, String name)//, PictureBox representation)
+        public Ship(double x, double y, String name, PictureBox representation)
         {
             _x = x;
             _y = y;
             _name = name;
-            _representation = null;
+            _representation = representation;
         }
     }
 }
