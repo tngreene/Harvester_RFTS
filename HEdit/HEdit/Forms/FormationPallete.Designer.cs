@@ -119,7 +119,6 @@
             this.FileName.Name = "FileName";
             this.FileName.Size = new System.Drawing.Size(100, 22);
             this.FileName.TabIndex = 53;
-            this.FileName.Text = "4";
             // 
             // FileNameLabel
             // 

@@ -37,9 +37,7 @@ namespace HEdit
         //A list of ships to keep track of, this will be used later in saving
         private List<Ship> _shipList;
         public List<Ship> ShipList { get { return _shipList; } }
-        //A list of picture boxes to keep track of, this will be used in removing them
-        private List<PictureBox> _pictureBoxList;
-
+        
         private Canvas _canvas;
         
         #endregion
@@ -47,12 +45,9 @@ namespace HEdit
         {           
             InitializeComponent();
             this.difficultySelectList.SelectedIndex = 0;
-            _shipList = new List<Ship>();
-
             _button = enemy_fighter;
 
-            _canvas = new Canvas(this);
-            _canvas.Show();
+            this.Reset();
         }
         public void ChangeCoords(int x, int y)
         {
@@ -106,7 +101,12 @@ namespace HEdit
         
         public void Reset()
         {
+            if (_canvas != null)
+            {
+                _canvas.Close();
+            }
             _canvas = new Canvas(this);
+            _canvas.Show();
             _shipList = new List<Ship>();
         }
         
