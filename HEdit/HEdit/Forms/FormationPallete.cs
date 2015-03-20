@@ -140,6 +140,9 @@ namespace HEdit
             }
             _canvas = new Canvas(this);
             _canvas.Show();
+            _canvas.Top = this.Top;
+            _canvas.Left = this.Left + this.Width;
+
             _shipList = new List<Ship>();
         }
         
@@ -147,27 +150,39 @@ namespace HEdit
         //When you click on save button
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
+            string directory = Directory.GetCurrentDirectory().ToString() + "\\";
+            string realFileName = this.FileName.Text;
+          
+            //Now we test if they added the file extension when they didn't have to
+            //if they haven't then we will
+            if (realFileName.EndsWith(".frm") == false)
+            {
+                realFileName += ".frm";
+            }
+
             try
             {
-                string difficultyText = difficultySelectList.SelectedItem.ToString();
-                switch (difficultyText)
-                {
-                    case "Easy":
-                        difficultyText = "e_";
-                        break;
-                    case "Medium":
-                        difficultyText = "m_";
-                        break;
-                    case "Hard":
-                        difficultyText = "h_";
-                        break;
-                }
                 //make a new File Stream, using means dispose of it after this is done
-                using (FileStream stream = new FileStream(Directory.GetCurrentDirectory().ToString() + "\\" + difficultyText + this.FileName.Text + ".frm", FileMode.Create))
+                using (FileStream stream = new FileStream(directory + realFileName, FileMode.Create))
                 {
                     //Make a new binaryWriter, using means dispose of it after this is done
                     using (BinaryWriter writer = new BinaryWriter(stream))
                     {
+                        //Write a difficulty
+                        char difficulty = '\0';
+                        switch(this.difficultySelectList.SelectedIndex)
+                        {
+                            case 0:
+                                difficulty = 'e';
+                                break;
+                            case 1:
+                                difficulty = 'm';
+                                break;
+                            case 2:
+                                difficulty = 'h';
+                                break;
+                        }
+                        writer.Write(difficulty);
                         //Write the total ship count. This is used to read in the correct number of lines later when the file is read in
                         writer.Write(_shipList.Count);
 
@@ -206,14 +221,24 @@ namespace HEdit
 
             Stream inStream = null;
             BinaryReader reader = null;
+            
+            //Users must give the file names without .frm
+            string directory = Directory.GetCurrentDirectory().ToString() + "\\";
+            string realFileName = this.FileName.Text;
+            if (realFileName.EndsWith(".frm") == false)
+            {
+                realFileName += ".frm";
+            }
+
             try
             {
                 //make a new File Stream, using means dispose of it after this is done
-                inStream = File.OpenRead(Directory.GetCurrentDirectory().ToString() + "\\" + this.FileName.Text + ".frm");
+                inStream = File.OpenRead(directory + realFileName);
 
                 //Make a new binaryReader, using means dispose of it after this is done
                 reader = new BinaryReader(inStream);
 
+                char difficulty = reader.ReadChar();
                 //read in the number of ships in the ship list. It isn't nesasary to the rest of the process
                 //but if you don't everything will get out of place
                 int ship_count = reader.ReadInt32();
@@ -232,6 +257,24 @@ namespace HEdit
                     {
                         throw new Exception("File contained invalid ship type, could not continue loading. Check for data corruption");
                     }
+                }
+
+                //Based on the first letter, change the difficulty combo box
+                if (difficulty == 'e')
+                {
+                    this.difficultySelectList.SelectedIndex = 0;
+                }
+                else if (difficulty == 'm')
+                {
+                    this.difficultySelectList.SelectedIndex = 1;
+                }
+                else if (difficulty == 'h')
+                {
+                    this.difficultySelectList.SelectedIndex = 2;
+                }
+                else
+                {
+                    MessageBox.Show("File was found without valid difficulty, ending load");
                 }
 
                 //Show that it was a success

@@ -7,6 +7,18 @@ using System.IO;
 
 namespace Transfer
 {
+    /* .frm - Formation File Spec
+     * 1 char, with potential values of e,m,h
+     * 1 int, for the number of ships in the formation
+     * An array of a "Ship" struct of 2 doubles (x,y) and a string, with potential values of "enemy_fighter", "bomber", "kamikaze"
+     * which is as long as the number of ships in the formation
+     * 
+     * The x and y position represents a relative position for a 16:9 scale
+     * char (difficulty:e,m,h)
+     * int (shipCount: n >= 0)
+     * array[shipCount] (list of ships: ship<double, double,string> (relative_x, relative_y, shiptype:"enemy_fighter" , "bomber" , "kamikaze"))
+     * So, ex
+     */
     class Program
     {
         static void Main(string[] args)
@@ -32,6 +44,10 @@ namespace Transfer
                     newFile = newFile.Insert(s.Length - 1 - 3, "_hd");
                     newFile = newFile.Replace("\\ToConvert\\", "\\Converted\\");
                     writer = new BinaryWriter(new FileStream(newFile, FileMode.Create));
+                    
+                    //Write the first letter as the difficulty
+                    writer.Write(Path.GetFileName(s)[0]);
+
                     ship_count = reader.ReadInt32();
                     writer.Write(ship_count);
 
