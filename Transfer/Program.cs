@@ -44,12 +44,12 @@ namespace Transfer
                     newFile = newFile.Insert(s.Length - 1 - 3, "_hd");
                     newFile = newFile.Replace("\\ToConvert\\", "\\Converted\\");
                     writer = new BinaryWriter(new FileStream(newFile, FileMode.Create));
-                    
+                    char difficulty = Path.GetFileName(s)[0];
                     //Write the first letter as the difficulty
-                    writer.Write(Path.GetFileName(s)[0]);
+                    writer.Write((char)difficulty);
 
                     ship_count = reader.ReadInt32();
-                    writer.Write(ship_count);
+                    writer.Write((Int32)ship_count);
 
                     while (reader.BaseStream.Position != reader.BaseStream.Length)
                     {
@@ -64,10 +64,11 @@ namespace Transfer
                         double hd_y = y;
                         hd_x /= 1920.00;
                         hd_y /= 1080;
-                        writer.Write(hd_x);
-                        writer.Write(hd_y);
-                        writer.Write(name);
+                        writer.Write((double)hd_x);
+                        writer.Write((double)hd_y);
+                        writer.Write((string)name);
                     }
+                    writer.Close();
                 }
             }
             catch (Exception e)
