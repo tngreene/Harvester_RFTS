@@ -22,7 +22,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
+
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -52,8 +52,10 @@ namespace Harvester
     
     public enum InputEntity
     {
+        ClickedPlay,
+        InputtedPause,
         Nothing,
-        ClickedPlay
+        PlayerDied,
     }
 
     /// <summary>
@@ -62,16 +64,19 @@ namespace Harvester
     public class Game : Microsoft.Xna.Framework.Game
     {
         //Temporary measures just to get this thing running
-        public const int WIDTH = 1920;
-        public const int HEIGHT = 1080;
-
+        
         #region Attributes
-        private GraphicsDeviceManager graphics;
+        private static GraphicsDeviceManager graphics;
+        public static int ScreenWidth { get { return graphics.GraphicsDevice.DisplayMode.Width; } }
+        public static int ScreenHeight { get { return graphics.GraphicsDevice.DisplayMode.Height; } }
+
         private SpriteBatch spriteBatch;
 
         //game states
-        private InputEntity inputEntity;// previous game state
+        private InputEntity inputEntity;
+
         private Gamestate currentState;//game will start in main menu state
+        
         //private int currentLevel;
         private GameplayState gameplayState; //the current gameplay state
         
@@ -273,20 +278,10 @@ namespace Harvester
         /// <returns></returns>
         private Gamestate LookUpTable(Gamestate curState, InputEntity inputEntity)
         {
+            SetMenuComponents(curState, inputEntity);
             switch (curState)
             {
                 case Gamestate.MainMenu:
-                    pauseMenu.Enabled = false; //disable pause menu
-                    pauseMenu.Visible = false;
-                    gameOverMenu.Enabled = false; //disable the game over menu
-                    gameOverMenu.Visible = false;
-                    //currentLevel.Enabled = false; //disable main menu
-                    //currentLevel.Visible = false;
-                    levelMenu.Enabled = false; //disable levelmenu
-                    levelMenu.Visible = false;
-                    
-                    mainMenu.Enabled = true; //enable and draw
-                    mainMenu.Visible = true;
                     switch (inputEntity)
                     {
                         case InputEntity.Nothing:
@@ -300,10 +295,13 @@ namespace Harvester
                             return Gamestate.FatalError;
                     }
                 case Gamestate.Gameplay:
-                    mainMenu.Enabled = false;
-                    mainMenu.Visible = false;
+                    
                     switch (inputEntity)
                     {
+                        case InputEntity.InputtedPause:
+                            return Gamestate.GamePause;
+                        case InputEntity.PlayerDied:
+                            return Gamestate.GameOver;
                         case InputEntity.Nothing:
                             return Gamestate.Gameplay;
                     }
@@ -312,6 +310,11 @@ namespace Harvester
                 case Gamestate.GamePause:
                     return Gamestate.FatalError;
                 case Gamestate.GameOver:
+                    switch (inputEntity)
+                    {
+                        case InputEntity.Nothing:
+                            return Gamestate.GameOver;
+                    }
                     return Gamestate.FatalError;
                 case Gamestate.LevelComplete:
                     //If you are not at the final level
@@ -332,6 +335,50 @@ namespace Harvester
             return Gamestate.FatalError;
         }
 
+        private void SetMenuComponents(Gamestate curState, InputEntity inputEntity)
+        {
+            //Start by disabling every component
+            mainMenu.Visible = false;
+            mainMenu.Enabled = false;
+
+            pauseMenu.Visible = false;
+            pauseMenu.Enabled = false;
+
+            gameOverMenu.Visible = false;
+            gameOverMenu.Enabled = false;
+
+            levelMenu.Visible = false;
+            levelMenu.Enabled = false;
+
+            //Then based on the current state
+            //Enable the one we want
+            switch (curState)
+            {
+                case Gamestate.MainMenu:
+                    mainMenu.Visible = true;
+                    mainMenu.Enabled = true;
+                    break;
+                case Gamestate.Gameplay:
+                    break;
+                case Gamestate.GamePause:
+                    pauseMenu.Visible = true;
+                    pauseMenu.Enabled = true;
+                    break;
+                case Gamestate.GameOver:
+                    gameOverMenu.Visible = true;
+                    gameOverMenu.Enabled = true;
+                    break;
+                case Gamestate.LevelComplete:
+                    levelMenu.Visible = true;
+                    levelMenu.Enabled = true;
+                    break;
+                case Gamestate.ExitProgram:
+                    break;
+                case Gamestate.FatalError:
+                default:
+                    break;
+            }
+        }
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -367,7 +414,7 @@ namespace Harvester
                 if (currentState == Gamestate.Gameplay)
                 {
                     PlayerMgr.Inst().Update(gameTime, this.Window.ClientBounds);                    
-                    theLevel.Update(gameTime, this.Window.ClientBounds);
+                    inputEntity = theLevel.Update(gameTime, this.Window.ClientBounds);
                 }
                 if (currentState == Gamestate.LevelComplete)
                 {

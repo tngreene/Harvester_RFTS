@@ -38,7 +38,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
+
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -134,8 +134,12 @@ namespace Harvester
         {
             enemiesLeft = enemies.Count;
             totalKilled = 0;
-            this.backgroundRect = new Rectangle(0, -720, 1280, 720);
             
+            //TODO - HARDCODED
+            maxEnemies = 45;
+            //TODO - HARDCODED
+            this.backgroundRect = new Rectangle(0, -720, 1280, 720);
+            difficulty = SpawnType.EasyWaves;
             //instantiate array of backgrounds
             //To fix the problem I change the array back to 4 and commented out the other parts. When switching from levels fill the array diffrently, this
             //can be done with a simple if
@@ -190,10 +194,12 @@ namespace Harvester
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values</param>
         /// <param name="clientRectangle">Provides the bounds of the screen</param>
-        public void Update(GameTime gameTime, Rectangle clientRectangle)
+        /// <returns>Returns the input state to game loop's FSM</returns>
+        public InputEntity Update(GameTime gameTime, Rectangle clientRectangle)
         {
             Console.WriteLine(totalKilled.ToString());
-            
+            InputEntity nextFSM_Input = InputEntity.Nothing;
+
             //update backgrounds
             UpdateBackground(backgrounds);
 
@@ -374,7 +380,7 @@ namespace Harvester
             }
 
             //animate the harvester
-            #region Harvester Animating Code5
+            #region Harvester Animating Code
             if (PlayerMgr.Inst().PlayerShip.Harvester.IsActive)
             {
                 h_framesElapsed += 1;
@@ -403,15 +409,13 @@ namespace Harvester
             //check for pause
             if (kbState.IsKeyDown(Keys.Escape))
             {
-                //CurrentState = Gamestate.GamePause;
-                //PrevState = Gamestate.Gameplay;
+                nextFSM_Input = InputEntity.InputtedPause;
             }
  
             //end game if player dies
             if (PlayerMgr.Inst().IsDead())
             {
-                //CurrentState = Gamestate.GameOver;
-                //PrevState = Gamestate.Gameplay;
+                nextFSM_Input = InputEntity.PlayerDied;
 
                 //add to player's score
                 PlayerMgr.Inst().Score += levelScore;
@@ -459,7 +463,7 @@ namespace Harvester
             }
 
             base.Update(gameTime);*/
-
+            return nextFSM_Input;
         }
 
         /// <summary>

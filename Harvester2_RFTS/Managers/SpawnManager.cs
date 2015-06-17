@@ -23,7 +23,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
+
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -32,9 +32,9 @@ namespace Harvester
 {
     public enum SpawnType
     {
-        SpawnSingle,
+        /*SpawnSingle,
         SpawnASetWave,
-        SpawnRandomWave,
+        SpawnRandomWave,*/
         EasyWaves,
         MediumWaves,
         HardWaves
@@ -165,7 +165,7 @@ namespace Harvester
                     case ShipType.enemy_fighter:
 
                         //create a new enemy fighter
-                        enemy = new EnemyFighter(new Rectangle((rand.Next(50, Game.WIDTH) - 50), rand.Next(50, Game.HEIGHT / 2), 50, 50), AssetMgr.Inst().TextureDic["enemy_fighter"], 3, 100, AssetMgr.Inst().TextureDic["enemy_bullet"], 25, 3);
+                        enemy = new EnemyFighter(new Rectangle((rand.Next(50, Game.ScreenWidth) - 50), rand.Next(50, Game.ScreenHeight / 2), 50, 50), AssetMgr.Inst().TextureDic["enemy_fighter"], 3, 100, AssetMgr.Inst().TextureDic["enemy_bullet"], 25, 3);
 
                         //if there is an enemy
                         if (enemy != null)
@@ -180,7 +180,7 @@ namespace Harvester
                     //spawns the kamikaze fighters, read above
                     case ShipType.kamikaze:
 
-                        enemy = new Kamikaze(new Rectangle(rand.Next(50, Game.WIDTH), -55, 50, 50), AssetMgr.Inst().TextureDic["kamikaze"], 4, 50, AssetMgr.Inst().TextureDic["enemy_bullet"], 0, playerShip);
+                        enemy = new Kamikaze(new Rectangle(rand.Next(50, Game.ScreenWidth), -55, 50, 50), AssetMgr.Inst().TextureDic["kamikaze"], 4, 50, AssetMgr.Inst().TextureDic["enemy_bullet"], 0, playerShip);
                         if (enemy != null)
                         {
                             enemiesTotal++;
@@ -191,12 +191,12 @@ namespace Harvester
                     case ShipType.bomber:
                         //Read above
                         //spawns bomber
-                        enemy = new Bomber(new Rectangle(-10, rand.Next(50, Game.HEIGHT / 2 - 100), 50, 50), AssetMgr.Inst().TextureDic["bomber"], 2, 100, AssetMgr.Inst().TextureDic["bomb"], 100, playerShip);
+                        enemy = new Bomber(new Rectangle(-10, rand.Next(50, Game.ScreenHeight / 2 - 100), 50, 50), AssetMgr.Inst().TextureDic["bomber"], 2, 100, AssetMgr.Inst().TextureDic["bomb"], 100, playerShip);
 
                         if (enemy != null)
                         {
                             
-                            enemy = new Bomber(new Rectangle(-10, rand.Next(50, Game.HEIGHT / 2 - 100) , 50, 50), AssetMgr.Inst().TextureDic["bomber"],2, 100, AssetMgr.Inst().TextureDic["bomb"],100, playerShip);
+                            enemy = new Bomber(new Rectangle(-10, rand.Next(50, Game.ScreenHeight / 2 - 100) , 50, 50), AssetMgr.Inst().TextureDic["bomber"],2, 100, AssetMgr.Inst().TextureDic["bomb"],100, playerShip);
                             
                             if (enemy != null)
                             {

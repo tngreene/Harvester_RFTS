@@ -14,7 +14,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
+
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -45,11 +45,6 @@ namespace Harvester
     public struct Formation
     {
         public List<ShipData> ships;
-
-        public Formation(int nothingNeed)
-        {
-            ships = new List<ShipData>();
-        }
     }
     public enum AssetType
     {
@@ -82,7 +77,6 @@ namespace Harvester
         public String[] LoadArray { get { return _loadArray; } }
 
         //A level array is a list of formations, each formation is a list of ships
-        //This would be looped though like this _levelArray[i][j];
         private List<Formation> _easyLevelArray;
         public List<Formation> EasyLevelArray { get { return _easyLevelArray; } }
         private List<Formation> _mediumLevelArray;
@@ -174,6 +168,7 @@ namespace Harvester
             if (value is SoundEffect)
             {
                 _soundDic.Add(key, (SoundEffect)value);
+                
             }
             else if (value is SpriteFont)
             {
@@ -223,45 +218,46 @@ namespace Harvester
                     ShipData tempData = new ShipData();
 
                     //Temporary formation that will later be added to a list somewhere
-                    Formation tempForm = new Formation(0);
-
+                    Formation tempForm;
+                    tempForm.ships = new List<ShipData>();
+                    
+                    char difficulty = input.ReadChar();
                     //Read in the number of ships to be used as the for loop condition
                     int listCount = input.ReadInt32();
 
                     for (int j = 0; j < listCount; j++)
                     {
                         // Read some data
-                        tempData.x = input.ReadInt32();
-                        tempData.y = input.ReadInt32();
+                        //HARDCODED
+                        tempData.x = (int)(input.ReadDouble() * Game.ScreenWidth);
+                        tempData.y = (int)(input.ReadDouble() * Game.ScreenHeight);
                         tempData.shipName = input.ReadString();
 
                         //Add this ship to the current formation
                         tempForm.ships.Add(tempData);
                     }
 
-                    //Represents only the file name
-                    String strippedDown = _loadLevelArray[i];
-
-                    strippedDown = strippedDown.Substring(currentDirectory.Length + 1);
-
                     //If the first letter is e
-                    if (strippedDown.StartsWith("e"))
+                    if (difficulty == 'e')
                     {
                         _easyLevelArray.Add(tempForm);
                     }
                     //If the first letter is m
-                    else if (strippedDown.StartsWith("m"))
+                    else if (difficulty == 'm')
                     {
                         _mediumLevelArray.Add(tempForm);
                     }
-                    else if (strippedDown.StartsWith("h"))
+                    else if (difficulty == 'h')
                     {
                         _hardLevelArray.Add(tempForm);
                     }
                     else
                     {
-                        throw new Exception("File does not start wth e, m,or h!");
+                        continue;
                     }
+
+                    input.Close();
+                    inStream.Close();
                 }
             }
             catch (Exception e)
@@ -271,9 +267,13 @@ namespace Harvester
             finally
             {
                 if (input != null)
+                {
                     input.Close();
-                else if (inStream != null)
+                }
+                if (inStream != null)
+                {
                     inStream.Close();
+                }
             }
         }
     }
