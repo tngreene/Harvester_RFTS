@@ -214,7 +214,7 @@ namespace Harvester
             l3Music = AssetManager.Instance.FindSound("level_three_music");
             menuMusic = AssetManager.Instance.FindSound("no_more_lies");
             currentMusic = menuMusic.CreateInstance();
-            //currentMusic.Play();
+            currentMusic.Play();
             
             //load video and video player
             //video = Content.Load<Video>("Movies\\start_up_movie");

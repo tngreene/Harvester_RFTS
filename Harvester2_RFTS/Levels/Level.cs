@@ -430,7 +430,7 @@ namespace Harvester
             //accuracy counting
             if (bulletsFired != 0 && bulletsHit != 0)
             {
-                accuracy = (double)bulletsHit / (double)bulletsFired * 100;
+                accuracy = (double)bulletsHit / (double)bulletsFired;// *100;
             }
 
             //update the game state machine if we beat the level

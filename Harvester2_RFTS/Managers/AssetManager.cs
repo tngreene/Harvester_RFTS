@@ -376,6 +376,11 @@ namespace Harvester
                     inStream.Close();
                 }
             }
+
+            if (_easyLevelArray.Count == 0 || _mediumLevelArray.Count == 0 || _hardLevelArray.Count == 0)
+            {
+                throw new Exception("Not enough levels to run game, ensure your formations folder is in the right place or make more!");
+            }
         }
     }
 }

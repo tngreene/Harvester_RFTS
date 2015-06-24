@@ -167,7 +167,9 @@ namespace Harvester
             }
 
             // Draw Accuracy and Score
-            string accuracyString = "Accuracy = " + accuracy + "%";
+            string accuracyString = String.Format("Accuracy = {0:0.##%}", accuracy);
+         
+
             string scoreString = "Level Score = " + gameEngine.CurrentLevel.LevelScore;
             string totalScoreString = "Total Score = " + gameEngine.Player.Score;
             spriteBatch.DrawString(scoreFont, scoreString, new Vector2(220, 250), Color.White);
