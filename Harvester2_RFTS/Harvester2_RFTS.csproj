@@ -79,22 +79,13 @@
     <Compile Include="Game Pieces\PowerUp.cs" />
     <Compile Include="Game Pieces\PowerUpBar.cs" />
     <Compile Include="Game Pieces\Ship.cs" />
-    <Compile Include="Levels\ILevel.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\LevelOne.cs" />
     <Compile Include="Levels\LevelThree.cs" />
     <Compile Include="Levels\LevelTwo.cs" />
     <Compile Include="Main Engine\Engine.cs" />
     <Compile Include="Main Engine\Program.cs" />
-    <Compile Include="Managers\AbilityManager.cs" />
     <Compile Include="Managers\AssetManager.cs" />
-    <Compile Include="Managers\AudioManager.cs" />
-    <Compile Include="Managers\BulletManager.cs" />
-    <Compile Include="Managers\EnemyAI.cs" />
-    <Compile Include="Managers\EnemyAIcs.cs" />
-    <Compile Include="Managers\HighscoreManager.cs" />
-    <Compile Include="Managers\LevelManager.cs" />
-    <Compile Include="Managers\MediaManager.cs" />
     <Compile Include="Managers\ShipManager.cs" />
     <Compile Include="Managers\SpawnManager.cs" />
     <Compile Include="Menus\GameOver.cs" />
@@ -393,68 +384,68 @@
     <None Include="Content\Fonts\ScoreFont.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Content\Formations\3fight_2kam_e.frm">
+    <Content Include="Content\Formations\e_3fight_2kam_e.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\all3_diag_m.frm">
+    <Content Include="Content\Formations\m_all3_diag_m.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\bomber_fighter_tri.frm">
+    <Content Include="Content\Formations\e_bomber_fighter_tri.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\enemies_bombers_m.frm">
+    <Content Include="Content\Formations\e_enemies_bombers_m.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\enemies_bomber_v.frm">
+    <Content Include="Content\Formations\m_enemies_bomber_v.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\enemies_m.frm">
+    <Content Include="Content\Formations\m_enemies_m.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\enemies_v.frm">
+    <Content Include="Content\Formations\e_enemies_v.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fighter_hex_e.frm">
+    <Content Include="Content\Formations\e_fighter_hex_e.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fighter_kam_hex_m.frm">
+    <Content Include="Content\Formations\m_fighter_kam_hex_m.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fighter_xxxx_h.frm">
+    <Content Include="Content\Formations\h_fighter_xxxx_h.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fight_clump_m.frm">
+    <Content Include="Content\Formations\m_fight_clump_m.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fight_fleet_2kam_h.frm">
+    <Content Include="Content\Formations\h_fight_fleet_2kam_h.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fight_kam_2bomb_o_m.frm">
+    <Content Include="Content\Formations\m_fight_kam_2bomb_o_m.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fight_kam_bom_tidal_m.frm">
+    <Content Include="Content\Formations\m_fight_kam_bom_tidal_m.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fight_kam_o.frm">
+    <Content Include="Content\Formations\h_fight_kam_o.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fight_UU_2kam_bom_h.frm">
+    <Content Include="Content\Formations\h_fight_UU_2kam_bom_h.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fight_UU_2kam_m.frm">
+    <Content Include="Content\Formations\m_fight_UU_2kam_m.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fight_UU_e.frm">
+    <Content Include="Content\Formations\e_fight_UU_e.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\fivefighter_kamikaze_bomber_rect.frm">
+    <Content Include="Content\Formations\h_fivefighter_kamikaze_bomber_rect.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Formations\kamikaze_surprise.frm">
+    <Content Include="Content\Formations\h_kamikaze_surprise.frm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Movies\start_up_movie.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

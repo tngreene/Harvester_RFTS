@@ -91,9 +91,10 @@ namespace Harvester
         private bool resetMusic;
 
         //for playing the startup movie
-        private Microsoft.Xna.Framework.Media.Video video;
+        /*TODO: For some reason it is impossible to get this to work
+         * private Video video;
         private VideoPlayer videoPlayer;
-        private Texture2D videoTexture;
+        private Texture2D videoTexture;*/
         private bool playOnce = true;
         #endregion
 
@@ -147,7 +148,8 @@ namespace Harvester
         /// </summary>
         protected override void Initialize()
         {
-            AssetManager.Instance.FillManager();
+            AssetManager.Instance.FillManager(this.Content);
+
             //make the player
             player = new Player("P1", this);
 
@@ -203,12 +205,6 @@ namespace Harvester
         /// </summary>
         protected override void LoadContent()
         {
-            #region Manager Loading Stuff
-
-            
-            AssetManager.Instance.FillLevelArrays();
-            #endregion
-
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -218,11 +214,11 @@ namespace Harvester
             l3Music = AssetManager.Instance.FindSound("level_three_music");
             menuMusic = AssetManager.Instance.FindSound("no_more_lies");
             currentMusic = menuMusic.CreateInstance();
-            currentMusic.Play();
-            /*Content.RootDirectory = System.IO.Directory.GetCurrentDirectory() + "\\Content\\Movies\\";
+            //currentMusic.Play();
+            
             //load video and video player
-            video = Content.Load<Video>("Movies\\start_up_movie");
-            videoPlayer = new VideoPlayer();*/
+            //video = Content.Load<Video>("Movies\\start_up_movie");
+            //videoPlayer = new VideoPlayer();
             
             //make the mouse line up with cursor
             Mouse.WindowHandle = this.Window.Handle;
@@ -252,11 +248,11 @@ namespace Harvester
                 this.Exit();
 
             //play the movie
-            if (videoPlayer.State == MediaState.Stopped && playOnce)
+            /*if (videoPlayer.State == MediaState.Stopped && playOnce)
             {
                 videoPlayer.Play(video);
                 playOnce = false;
-            }
+            }*/
 
             //pick what music to play
             if (resetMusic == true)
@@ -312,7 +308,7 @@ namespace Harvester
             }
 
             //UPDATE GAME ONCE VIDEO IS DONE
-            if (videoPlayer.State == MediaState.Stopped)
+            //if (videoPlayer.State == MediaState.Stopped)
             {
                 //switch the gamestate (FSM)
                 switch (currentState)
@@ -417,7 +413,7 @@ namespace Harvester
 
             spriteBatch.Begin();
 
-            #region Play Intro Video
+            /*#region Play Intro Video
             //PLAY INTRO BEFORE ANYTHING ELSE
             // Only call GetTexture if a video is playing or paused
             if (videoPlayer.State != MediaState.Stopped)
@@ -436,7 +432,7 @@ namespace Harvester
             #endregion
 
             //DRAW GAME ONCE VIDEO IS DONE
-            if (videoPlayer.State == MediaState.Stopped)
+            if (videoPlayer.State == MediaState.Stopped)*/
             {
                 //draw based on the FSM
                 switch (currentState)

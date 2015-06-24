@@ -78,7 +78,7 @@ namespace Harvester
         Boss
     }
 
-    public class AssetManager : Game
+    public class AssetManager
     {
         //Attributes
         #region Arrays
@@ -149,14 +149,14 @@ namespace Harvester
             _hardLevelArray = new List<Formation>();
         }
 
-        public void FillManager()
+        public void FillManager(ContentManager contentManager)
         {
             //Get the current directory and store it as a string
             String currentDirectory = Directory.GetCurrentDirectory();
 
             //Add on the Content Directory
             currentDirectory += "\\Content";
-
+            
             try
             {
                 //Try to Get all the files in the current directory of the certain file type and put them in a string 
@@ -190,15 +190,16 @@ namespace Harvester
                     {
                         case "Sound":
                             //Pass in the key (file name - .xnb) and the loaded texture
-                            AssetManager.Instance.FillDictionaries(key, Content.Load<SoundEffect>(location));
+                            AssetManager.Instance.FillDictionaries(key, contentManager.Load<SoundEffect>(location));
                             break;
                         case "Fonts":
-                            AssetManager.Instance.FillDictionaries(key, Content.Load<SpriteFont>(location));
+                            AssetManager.Instance.FillDictionaries(key, contentManager.Load<SpriteFont>(location));
                             break;
                         case "Movies":
+                            //contentManager.Load<Video>(location);
                             break;
                         default:
-                            AssetManager.Instance.FillDictionaries(key, Content.Load<Texture2D>(location));
+                            FillDictionaries(key, contentManager.Load<Texture2D>(location));
                             break;
                     }
                 }
@@ -320,23 +321,23 @@ namespace Harvester
                     //Temporary formation that will later be added to a list somewhere
                     Formation tempForm;
                     tempForm.ships = new List<ShipData>();
-
-                    char difficulty = input.ReadChar();
+                    
                     //Read in the number of ships to be used as the for loop condition
                     int listCount = input.ReadInt32();
 
                     for (int j = 0; j < listCount; j++)
                     {
                         // Read some data
-                        //HARDCODED
-                        tempData.x = (int)(input.ReadDouble() * Engine.ScreenWidth);
-                        tempData.y = (int)(input.ReadDouble() * Engine.ScreenHeight);
+                        tempData.x = input.ReadInt32();
+                        tempData.y = input.ReadInt32();
                         tempData.shipName = input.ReadString();
 
                         //Add this ship to the current formation
                         tempForm.ships.Add(tempData);
                     }
 
+                    char difficulty = Path.GetFileName(_loadLevelArray[i])[0];
+                    
                     //If the first letter is e
                     if (difficulty == 'e')
                     {

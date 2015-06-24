@@ -114,7 +114,7 @@ namespace Harvester
         {
             //load textures
             background = AssetManager.Instance.FindTexture("pause_menu_background");
-            title = AssetManager.Instance.FindTexture("pause_menu_title");
+            title = AssetManager.Instance.FindTexture("pause_menu_title_texture");
             pauseButtonTexture = AssetManager.Instance.FindTexture("pause_menu_resume_button_texture");
             quitButtonTexture = AssetManager.Instance.FindTexture("pause_menu_quit_button_texture");
             //create buttons
