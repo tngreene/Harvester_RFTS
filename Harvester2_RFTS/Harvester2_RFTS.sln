@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harvester2_RFTS", "Harveste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HEdit", "..\HEdit\HEdit\HEdit.csproj", "{787D3469-7A68-43F3-B4F3-B17EDBC906B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transfer", "..\Transfer\Transfer.csproj", "{9F0D650B-9128-41E8-95DD-144FBC479BFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Release|Mixed Platforms.Build.0 = Release|x86
 		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Release|x86.ActiveCfg = Release|x86
 		{787D3469-7A68-43F3-B4F3-B17EDBC906B8}.Release|x86.Build.0 = Release|x86
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9F0D650B-9128-41E8-95DD-144FBC479BFF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

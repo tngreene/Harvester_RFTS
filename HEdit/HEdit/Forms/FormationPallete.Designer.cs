@@ -36,14 +36,14 @@
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.FileName = new System.Windows.Forms.TextBox();
-            this.FileNameLabel = new System.Windows.Forms.Label();
             this.difficultySelectList = new System.Windows.Forms.ComboBox();
             this.difficultySelectLabel = new System.Windows.Forms.Label();
             this.mouse_coords = new System.Windows.Forms.Label();
             this.kamikaze = new System.Windows.Forms.Button();
             this.bomber = new System.Windows.Forms.Button();
             this.enemy_fighter = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,22 +113,6 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // FileName
-            // 
-            this.FileName.Location = new System.Drawing.Point(4, 292);
-            this.FileName.Name = "FileName";
-            this.FileName.Size = new System.Drawing.Size(100, 22);
-            this.FileName.TabIndex = 53;
-            // 
-            // FileNameLabel
-            // 
-            this.FileNameLabel.AutoSize = true;
-            this.FileNameLabel.Location = new System.Drawing.Point(4, 272);
-            this.FileNameLabel.Name = "FileNameLabel";
-            this.FileNameLabel.Size = new System.Drawing.Size(71, 17);
-            this.FileNameLabel.TabIndex = 52;
-            this.FileNameLabel.Text = "File Name";
-            // 
             // difficultySelectList
             // 
             this.difficultySelectList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -137,7 +121,7 @@
             "Easy",
             "Medium",
             "Hard"});
-            this.difficultySelectList.Location = new System.Drawing.Point(4, 245);
+            this.difficultySelectList.Location = new System.Drawing.Point(4, 189);
             this.difficultySelectList.Name = "difficultySelectList";
             this.difficultySelectList.Size = new System.Drawing.Size(121, 24);
             this.difficultySelectList.TabIndex = 3;
@@ -145,7 +129,7 @@
             // difficultySelectLabel
             // 
             this.difficultySelectLabel.AutoSize = true;
-            this.difficultySelectLabel.Location = new System.Drawing.Point(4, 225);
+            this.difficultySelectLabel.Location = new System.Drawing.Point(4, 169);
             this.difficultySelectLabel.Name = "difficultySelectLabel";
             this.difficultySelectLabel.Size = new System.Drawing.Size(61, 17);
             this.difficultySelectLabel.TabIndex = 57;
@@ -154,7 +138,7 @@
             // mouse_coords
             // 
             this.mouse_coords.AutoSize = true;
-            this.mouse_coords.Location = new System.Drawing.Point(1, 208);
+            this.mouse_coords.Location = new System.Drawing.Point(1, 152);
             this.mouse_coords.Name = "mouse_coords";
             this.mouse_coords.Size = new System.Drawing.Size(101, 17);
             this.mouse_coords.TabIndex = 58;
@@ -196,19 +180,29 @@
             this.enemy_fighter.UseVisualStyleBackColor = false;
             this.enemy_fighter.Click += new System.EventHandler(this.regularEnemy_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "frm";
+            this.openFileDialog1.Filter = "Formation Files (*.frm)|";
+            this.openFileDialog1.InitialDirectory = "Content\\Formations\\";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "frm";
+            this.saveFileDialog1.Filter = "Formation Files (*.frm)|";
+            this.saveFileDialog1.InitialDirectory = "Content\\Formations\\";
+            // 
             // FormationPallete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(128, 320);
+            this.ClientSize = new System.Drawing.Size(128, 219);
             this.Controls.Add(this.bomber);
             this.Controls.Add(this.mouse_coords);
             this.Controls.Add(this.kamikaze);
             this.Controls.Add(this.difficultySelectLabel);
             this.Controls.Add(this.enemy_fighter);
             this.Controls.Add(this.difficultySelectList);
-            this.Controls.Add(this.FileName);
-            this.Controls.Add(this.FileNameLabel);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -217,6 +211,7 @@
             this.Text = "HEdit";
             this.TopMost = true;
             this.LocationChanged += new System.EventHandler(this.FormationPallete_LocationChanged);
+            this.MouseEnter += new System.EventHandler(this.focusAlways);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -233,14 +228,14 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
-        private System.Windows.Forms.TextBox FileName;
-        private System.Windows.Forms.Label FileNameLabel;
         private System.Windows.Forms.ComboBox difficultySelectList;
         private System.Windows.Forms.Label difficultySelectLabel;
         private System.Windows.Forms.Label mouse_coords;
         private System.Windows.Forms.Button enemy_fighter;
         private System.Windows.Forms.Button kamikaze;
         private System.Windows.Forms.Button bomber;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 
     }
 }

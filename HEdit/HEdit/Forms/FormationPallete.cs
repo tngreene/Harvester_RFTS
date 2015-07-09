@@ -74,9 +74,9 @@ namespace HEdit
         /// <param name="y">The y position</param>
         /// <param name="name">The ship type (used for opening a file</param>
         /// <returns>If it succeded or not</returns>
-        public bool AddShip(double x, double y, string name="")
+        public bool AddShip(int x, int y, string name="")
         {
-            if (_canvas.SafeZone.Contains((int)x, (int)y))
+            if (_canvas.SafeZone.Contains(x, y))
             {
                 int enemyCenter = (_button.Height / 2);
 
@@ -149,40 +149,37 @@ namespace HEdit
         //When you click on save button
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            string directory = Directory.GetCurrentDirectory().ToString() + "\\Content\\Formations\\";
-
-            //Write a difficulty
-            string difficulty = "";
-            switch (this.difficultySelectList.SelectedIndex)
+            saveFileDialog1.FileName = "";
+            DialogResult diagResult = saveFileDialog1.ShowDialog();
+            if (diagResult != System.Windows.Forms.DialogResult.OK)
             {
-                case 0:
-                    difficulty = "e";
-                    break;
-                case 1:
-                    difficulty = "m";
-                    break;
-                case 2:
-                    difficulty = "h";
-                    break;
-            }
-
-            string realFileName = difficulty + "_" + this.FileName.Text;
-          
-            //Now we test if they added the file extension when they didn't have to
-            //if they haven't then we will
-            if (realFileName.EndsWith(".frm") == false)
-            {
-                realFileName += ".frm";
+                return;
             }
 
             try
             {
                 //make a new File Stream, using means dispose of it after this is done
-                using (FileStream stream = new FileStream(directory + realFileName, FileMode.Create))
+                using (FileStream stream = new FileStream(saveFileDialog1.FileName, FileMode.Create))
                 {
                     //Make a new binaryWriter, using means dispose of it after this is done
                     using (BinaryWriter writer = new BinaryWriter(stream))
                     {
+                        //Write a difficulty
+                        char difficulty = '\0';
+                        switch (this.difficultySelectList.SelectedIndex)
+                        {
+                            case 0:
+                                difficulty = 'e';
+                                break;
+                            case 1:
+                                difficulty = 'm';
+                                break;
+                            case 2:
+                                difficulty = 'h';
+                                break;
+                        }
+                        writer.Write(difficulty);
+
                         //Write the total ship count. This is used to read in the correct number of lines later when the file is read in
                         writer.Write(_shipList.Count);
 
@@ -190,9 +187,9 @@ namespace HEdit
                         for (int i = 0; i < _shipList.Count; i++)
                         {
                             //Write x position
-                            writer.Write(_shipList[i].X / _canvas.Width);
+                            writer.Write(_shipList[i].X);
                             //Write y position
-                            writer.Write(_shipList[i].Y / _canvas.Height);
+                            writer.Write(_shipList[i].Y);
                             //Write name
                             writer.Write(_shipList[i].Name);
                         }
@@ -215,35 +212,20 @@ namespace HEdit
         //When you click on open
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
+            DialogResult diagResult = openFileDialog1.ShowDialog();
+            if(diagResult != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
+            
             //Reset the whole canvas
             //Clear the lists
             this.Reset();
 
             Stream inStream = null;
             BinaryReader reader = null;
-            
-            //Users must give the file names without .frm
-            string directory = Directory.GetCurrentDirectory().ToString() + "\\Content\\Formations\\";
-            string realFileName = this.FileName.Text;
 
-            //If the user did not add in the correct prefix, add it to the realFileName
-            if (!(realFileName.StartsWith("e_") || realFileName.StartsWith("m_") || realFileName.StartsWith("h_")))
-            {
-                string difficulty = "";
-                switch (this.difficultySelectList.SelectedIndex)
-                {
-                    case 0:
-                        difficulty = "e_";
-                        break;
-                    case 1:
-                        difficulty = "m_";
-                        break;
-                    case 2:
-                        difficulty = "h_";
-                        break;
-                }
-                realFileName = realFileName.Insert(0, difficulty);
-            }
+            string realFileName = openFileDialog1.FileName;
 
             if (realFileName.EndsWith(".frm") == false)
             {
@@ -253,11 +235,26 @@ namespace HEdit
             try
             {
                 //make a new File Stream, using means dispose of it after this is done
-                inStream = File.OpenRead(directory + realFileName);
+                inStream = File.OpenRead(realFileName);
 
                 //Make a new binaryReader, using means dispose of it after this is done
                 reader = new BinaryReader(inStream);
 
+                char difficulty = reader.ReadChar();
+
+                switch (difficulty)
+                {
+                    case 'e':
+                        this.difficultySelectList.SelectedIndex = 0;
+                        break;
+                    case 'm':
+                        this.difficultySelectList.SelectedIndex = 1;
+                        break;
+                    case 'h':
+                    default:
+                        this.difficultySelectList.SelectedIndex = 2;
+                        break;
+                }
                 //read in the number of ships in the ship list. It isn't nesasary to the rest of the process
                 //but if you don't everything will get out of place
                 int ship_count = reader.ReadInt32();
@@ -265,13 +262,13 @@ namespace HEdit
                 while (reader.BaseStream.Position != reader.BaseStream.Length)
                 {
                     //Read x
-                    double x = reader.ReadInt32();
+                    int x = reader.ReadInt32();
                     //Read y
-                    double y = reader.ReadInt32();
+                    int y = reader.ReadInt32();
                     //Read the name
                     string name = reader.ReadString();
 
-                    bool result = AddShip(x * _canvas.Width, y * _canvas.Height, name);
+                    bool result = AddShip(x, y, name);
                     if (result == false)
                     {
                         throw new Exception("File contained invalid ship type, could not continue loading. Check for data corruption");
@@ -311,6 +308,11 @@ namespace HEdit
         {
             _canvas.Top = this.Top;
             _canvas.Left = this.Left + this.Width;
+        }
+
+        private void focusAlways(object sender, EventArgs e)
+        {
+            this.Select();
         }
     }
 }

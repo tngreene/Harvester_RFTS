@@ -15,16 +15,16 @@ namespace HEdit
         //Attributes
 
         //ints for x and y
-        private double _x;
-        private double _y;
+        private int _x;
+        private int _y;
 
         //string name
         private String _name;
         private PictureBox _representation;
 
         //Properties for position
-        public double X { get { return _x; } set { _x = value; } }
-        public double Y { get { return _y; } set { _y = value; } }
+        public int X { get { return _x; } set { _x = value; } }
+        public int Y { get { return _y; } set { _y = value; } }
 
         /// <summary>
         /// Property for the name
@@ -40,7 +40,7 @@ namespace HEdit
         /// <param name="y">y</param>
         /// <param name="name">name of ship</param>
         /// <param name="representation">The PictureBox that this ship has, currently useless/harmless</param>
-        public Ship(double x, double y, String name, PictureBox representation)
+        public Ship(int x, int y, String name, PictureBox representation)
         {
             _x = x;
             _y = y;

@@ -321,7 +321,8 @@ namespace Harvester
                     //Temporary formation that will later be added to a list somewhere
                     Formation tempForm;
                     tempForm.ships = new List<ShipData>();
-                    
+
+                    char difficulty = input.ReadChar();
                     //Read in the number of ships to be used as the for loop condition
                     int listCount = input.ReadInt32();
 
@@ -336,8 +337,6 @@ namespace Harvester
                         tempForm.ships.Add(tempData);
                     }
 
-                    char difficulty = Path.GetFileName(_loadLevelArray[i])[0];
-                    
                     //If the first letter is e
                     if (difficulty == 'e')
                     {
