@@ -119,17 +119,16 @@
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>1. Introduction
-   This tool allows a user to create custom formations for the main game. It saves it's files in the game's TBD folder
+    *This tool allows a user to create custom formations for the game. Custom formations should be saved in Content\Formations.
 
 2. UI Overview
-          * Click on the enemy buttons to select your "brush", then click anywhere inside the red square (safe zone) to place
-          * The red player is there only for visual reference
-          * The dropdown menu above the file name lets you select diffrent difficulties (default is easy.)
-          * Put your file name in the file name dialog box, file extension or difficulty prefix is not needed
-          * The Tool Bar
+    * Click on an enemy's icon to select your "brush".
+    * Start clicking anywhere inside the red square (safe zone) to place.
+    * Use the dropdown menu to select the difficulty rating of your formation.
+    * The Tool Bar
                - New: Creates a new blank page.
-               - Open: Opens an existing format file, the file is chosen from what is in the dialog box
-               - Save: Saves the current formation, overwrites an existing one.
+               - Open: Opens the "Open File" dialog box.
+               - Save: Opens the "Save File" dialog box.
                - Help: Brings up this screen.
 
 This tool was designed by Theodore "Ted" Greene for Team Cascioli Ravioli for use with the game Harvester (c)2012-15</value>

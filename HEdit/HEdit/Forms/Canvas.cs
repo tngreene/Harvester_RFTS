@@ -47,7 +47,7 @@ namespace HEdit.Forms
             //Draw the grid columns
             int numSubDivsC = 12;
             int numSubDivsR = 7;
-            Rectangle gridSubDivSize = new Rectangle(_canvasRect.Location, new Size(_canvasRect.Width / numSubDivsC, _canvasRect.Height / numSubDivsR));
+            Rectangle gridSubDivSize = new Rectangle(_canvasRect.Location, new Size((int)(_canvasRect.Width / numSubDivsC * 1.01),(int)(_canvasRect.Height / numSubDivsR * 1.01)));
             int y = gridSubDivSize.Location.Y;
             for (int i = 0; i < numSubDivsR; i++)
             {
