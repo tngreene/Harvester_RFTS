@@ -290,6 +290,20 @@ namespace Harvester
             //update kbState
             kbState = Keyboard.GetState();
 
+            if (kbState.IsKeyDown(Keys.RightAlt) && kbState.IsKeyDown(Keys.Enter))
+            {
+                graphics.ToggleFullScreen();
+            }
+
+            if (kbState.IsKeyDown(Keys.M))
+            {
+                currentMusic.Volume = 0;
+            }
+
+            if (kbState.IsKeyDown(Keys.U))
+            {
+                currentMusic.Volume = 1;
+            }
             //get the current cursor pos (for crosshair)
             cursorPos = new Vector2(currentMouseState.X - 25, currentMouseState.Y - 25);
 

@@ -92,7 +92,6 @@
     <Compile Include="Menus\GamePause.cs" />
     <Compile Include="Menus\LevelCompleteMenu.cs" />
     <Compile Include="Menus\MainMenu.cs" />
-    <Compile Include="Menus\Manual.cs" />
     <Compile Include="Menus\Menu.cs" />
     <Compile Include="Menus\Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

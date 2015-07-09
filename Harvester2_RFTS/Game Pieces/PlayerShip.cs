@@ -289,12 +289,12 @@ namespace Harvester
             //update ship firing
             #region Firing code
             //fire bullets if harvester not active and LM clicked
-            if ((gameEngine.KbState.IsKeyDown(Keys.Enter) || gameEngine.CurrentMouseState.LeftButton == ButtonState.Pressed) && this.Harvester.IsActive == false)
+            if ((gameEngine.KbState.IsKeyDown(Keys.Space) || gameEngine.CurrentMouseState.LeftButton == ButtonState.Pressed) && this.Harvester.IsActive == false)
             {
                 this.Fire();
             }
             //fires the harvester if RM clicked
-            else if ((gameEngine.KbState.IsKeyDown(Keys.RightShift) || gameEngine.CurrentMouseState.RightButton == ButtonState.Pressed))
+            else if ((gameEngine.KbState.IsKeyDown(Keys.E) || gameEngine.CurrentMouseState.RightButton == ButtonState.Pressed))
             {
                 this.Harvest();
             }

@@ -559,7 +559,7 @@ namespace Harvester
 
                         if (enemies[i] is ImperialBoss)
                         {
-                            //dont remove bullets
+                            //don't remove bullets
                         }
                         else
                         {

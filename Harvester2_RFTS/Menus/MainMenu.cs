@@ -393,17 +393,17 @@ namespace Harvester
             textLineList = new List<string>();
             //You'll need to add in the info line by line
             textLineList.Add("                                            Welcome to Harvester!\n");
-            textLineList.Add("\n");
-            textLineList.Add("A = Move Left\n");
-            textLineList.Add("W = Move Forward\n");
-            textLineList.Add("D = Move Right\n");
-            textLineList.Add("S = Move Backward\n");
-            textLineList.Add("Q/Middle Click = Fire Powerup\n");
-            textLineList.Add("Click = Shoot\n");
-            textLineList.Add("Right Click = Fire the Harvester\n");
-            textLineList.Add("The Harvester kills the enemy when they touch and regenerates a small portion of the player's health");
-            textLineList.Add("A powerup is a special bonus attack that has its own unique effect");
-            textLineList.Add("\n");
+            textLineList.Add("W/A/S/D = Move");
+            textLineList.Add("Space/Left Click = Shoot");
+            textLineList.Add("E/Right Click = Fire the Harvester");
+            textLineList.Add("Q/Middle Click = Fire Powerup");
+            textLineList.Add("M/U = Mute/Unmute Music");
+            textLineList.Add("Right Alt + Enter = Toggle Fullscreen");
+            textLineList.Add("");
+            textLineList.Add("The Harvester kills the enemy when they touch and regenerates a small portion of the player's health.");
+            textLineList.Add("Bombs    detonate when they reach your vertical position.");
+            textLineList.Add("Powerups    give you special abilities. The collected powerup appears in the top right.");
+            textLineList.Add("");
             #endregion
 
             //randomly generate background boxes with random color and size
@@ -556,7 +556,18 @@ namespace Harvester
             for (int i = 0; i < textLineList.Count; i++)
             {
                 spriteBatch.DrawString(AssetManager.Instance.FindSpriteFont("MainMenuFont"),textLineList[i], new Vector2(manualBackgroundPos.X + 30, 300f+(i*25f)), Color.White);
+                if (textLineList[i].StartsWith("Bomb"))
+                {
+                    spriteBatch.Draw(AssetManager.Instance.FindTexture("bomb"), new Vector2(manualBackgroundPos.X + 89, 300f + (i * 25f) - 2), Color.White);
+                }
+                else if (textLineList[i].StartsWith("Powerup"))
+                {
+                    spriteBatch.Draw(AssetManager.Instance.FindTexture("powerup_icon"), new Vector2(manualBackgroundPos.X + 128, 300f + (i * 25f) + 4), Color.White);
+                }
             }
+
+            
+            
         }
         #endregion
 

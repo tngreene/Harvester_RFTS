@@ -21,8 +21,8 @@ namespace HEdit.Forms
         {
             InitializeComponent();
             _fRef = fp;
-            _canvasRect = new Rectangle(0, 0, 1024,576);//16:9
-            _safeZone = new Rectangle(_canvasRect.Left + _fRef.ButtonSize.Width / 2, _canvasRect.Top + _fRef.ButtonSize.Height / 2, _canvasRect.Width - _fRef.ButtonSize.Width, _canvasRect.Height - _fRef.ButtonSize.Height);
+            _canvasRect = new Rectangle(0, 0, 1280, 720);//16:9
+            _safeZone = new Rectangle(_canvasRect.Left + _fRef.ButtonSize.Width / 2, _canvasRect.Top + _fRef.ButtonSize.Height / 2, _canvasRect.Width - _fRef.ButtonSize.Width, _canvasRect.Height - _fRef.ButtonSize.Height - 50);
             
             //The hero is just a graphic, therefore it is added here
             PictureBox hero = new PictureBox();

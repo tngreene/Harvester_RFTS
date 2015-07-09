@@ -125,13 +125,12 @@ namespace HEdit
 
         public void PrintShipList()
         {
-
             for (int i = 0; i < ShipList.Count; i++)
             {
                 string p = ShipList[i].ToString();
-                int print = 0;
             }
         }
+
         public void Reset()
         {
             if (_canvas != null)
@@ -150,8 +149,24 @@ namespace HEdit
         //When you click on save button
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            string directory = Directory.GetCurrentDirectory().ToString() + "\\Content\\Mods\\Formations\\";
-            string realFileName = this.FileName.Text;
+            string directory = Directory.GetCurrentDirectory().ToString() + "\\Content\\Formations\\";
+
+            //Write a difficulty
+            string difficulty = "";
+            switch (this.difficultySelectList.SelectedIndex)
+            {
+                case 0:
+                    difficulty = "e";
+                    break;
+                case 1:
+                    difficulty = "m";
+                    break;
+                case 2:
+                    difficulty = "h";
+                    break;
+            }
+
+            string realFileName = difficulty + "_" + this.FileName.Text;
           
             //Now we test if they added the file extension when they didn't have to
             //if they haven't then we will
@@ -168,21 +183,6 @@ namespace HEdit
                     //Make a new binaryWriter, using means dispose of it after this is done
                     using (BinaryWriter writer = new BinaryWriter(stream))
                     {
-                        //Write a difficulty
-                        char difficulty = '\0';
-                        switch(this.difficultySelectList.SelectedIndex)
-                        {
-                            case 0:
-                                difficulty = 'e';
-                                break;
-                            case 1:
-                                difficulty = 'm';
-                                break;
-                            case 2:
-                                difficulty = 'h';
-                                break;
-                        }
-                        writer.Write(difficulty);
                         //Write the total ship count. This is used to read in the correct number of lines later when the file is read in
                         writer.Write(_shipList.Count);
 
@@ -223,8 +223,28 @@ namespace HEdit
             BinaryReader reader = null;
             
             //Users must give the file names without .frm
-            string directory = Directory.GetCurrentDirectory().ToString() + "\\Content\\Mods\\Formations\\";
+            string directory = Directory.GetCurrentDirectory().ToString() + "\\Content\\Formations\\";
             string realFileName = this.FileName.Text;
+
+            //If the user did not add in the correct prefix, add it to the realFileName
+            if (!(realFileName.StartsWith("e_") || realFileName.StartsWith("m_") || realFileName.StartsWith("h_")))
+            {
+                string difficulty = "";
+                switch (this.difficultySelectList.SelectedIndex)
+                {
+                    case 0:
+                        difficulty = "e_";
+                        break;
+                    case 1:
+                        difficulty = "m_";
+                        break;
+                    case 2:
+                        difficulty = "h_";
+                        break;
+                }
+                realFileName = realFileName.Insert(0, difficulty);
+            }
+
             if (realFileName.EndsWith(".frm") == false)
             {
                 realFileName += ".frm";
@@ -238,7 +258,6 @@ namespace HEdit
                 //Make a new binaryReader, using means dispose of it after this is done
                 reader = new BinaryReader(inStream);
 
-                char difficulty = reader.ReadChar();
                 //read in the number of ships in the ship list. It isn't nesasary to the rest of the process
                 //but if you don't everything will get out of place
                 int ship_count = reader.ReadInt32();
@@ -246,9 +265,9 @@ namespace HEdit
                 while (reader.BaseStream.Position != reader.BaseStream.Length)
                 {
                     //Read x
-                    double x = reader.ReadDouble();
+                    double x = reader.ReadInt32();
                     //Read y
-                    double y = reader.ReadDouble();
+                    double y = reader.ReadInt32();
                     //Read the name
                     string name = reader.ReadString();
 
@@ -257,24 +276,6 @@ namespace HEdit
                     {
                         throw new Exception("File contained invalid ship type, could not continue loading. Check for data corruption");
                     }
-                }
-
-                //Based on the first letter, change the difficulty combo box
-                if (difficulty == 'e')
-                {
-                    this.difficultySelectList.SelectedIndex = 0;
-                }
-                else if (difficulty == 'm')
-                {
-                    this.difficultySelectList.SelectedIndex = 1;
-                }
-                else if (difficulty == 'h')
-                {
-                    this.difficultySelectList.SelectedIndex = 2;
-                }
-                else
-                {
-                    MessageBox.Show("File was found without valid difficulty, ending load");
                 }
 
                 //Show that it was a success
